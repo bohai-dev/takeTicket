@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.apple.appleuser.dao")
+@MapperScan("com.example.takeTicket.dao")
 public class TakeTicketApplication {
 
 	public static void main(String[] args) {

@@ -2,7 +2,7 @@ package com.example.takeTicket.dao;
 
 import com.example.takeTicket.domain.AdminUser;
 
-public interface adminUserMapper {
+public interface AdminUserMapper {
     int deleteByPrimaryKey(String userId);
 
     int insert(AdminUser record);

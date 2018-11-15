@@ -1,15 +1,14 @@
 package com.example.takeTicket.util;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 
 //CommandLineRunner会在项目启动后自动执行，这里将它设置为只在 prod 环境下执行，是为了在本地单元测试的时候，让它不自动执行
-//@Profile("prod")
-
+@Profile("prod")
 @Component
 public class GetToken implements CommandLineRunner{
 
@@ -29,10 +28,10 @@ public class GetToken implements CommandLineRunner{
 		
 	}
 
-	public static void netAccessToken() throws JSONException {
+	public static void netAccessToken()  {
 		url.append("&appid=").append(Constants.APPID).append("&secret=").append(Constants.SECRET);
 		String result=NetworkConnection.get(url.toString());
-		JSONObject jsonObject=new JSONObject(result);
+		JSONObject jsonObject=JSON.parseObject(result);
 		String token=jsonObject.getString("access_token");
 		accessToken=token;
 		

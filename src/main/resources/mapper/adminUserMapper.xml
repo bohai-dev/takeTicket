@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.takeTicket.dao.adminUserMapper" >
-  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.adminUser" >
+<mapper namespace="com.example.takeTicket.dao.AdminUserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.AdminUser" >
     <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
     <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
     <result column="USER_PWD" property="userPwd" jdbcType="VARCHAR" />
@@ -19,13 +19,13 @@
     delete from ADMIN_USER
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.example.takeTicket.domain.adminUser" >
+  <insert id="insert" parameterType="com.example.takeTicket.domain.AdminUser" >
     insert into ADMIN_USER (USER_ID, USER_NAME, USER_PWD
       )
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.adminUser" >
+  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.AdminUser" >
     insert into ADMIN_USER
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeTicket.domain.adminUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeTicket.domain.AdminUser" >
     update ADMIN_USER
     <set >
       <if test="userName != null" >
@@ -62,7 +62,7 @@
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.takeTicket.domain.adminUser" >
+  <update id="updateByPrimaryKey" parameterType="com.example.takeTicket.domain.AdminUser" >
     update ADMIN_USER
     set USER_NAME = #{userName,jdbcType=VARCHAR},
       USER_PWD = #{userPwd,jdbcType=VARCHAR}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.takeTicket.dao.couponMapper" >
-  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.coupon" >
+  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.Coupon" >
     <id column="COUPON_ID" property="couponId" jdbcType="VARCHAR" />
     <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" />
     <result column="SHARE_TIMES" property="shareTimes" jdbcType="DECIMAL" />
@@ -28,7 +28,7 @@
     delete from COUPON
     where COUPON_ID = #{couponId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.example.takeTicket.domain.coupon" >
+  <insert id="insert" parameterType="com.example.takeTicket.domain.Coupon" >
     insert into COUPON (COUPON_ID, SHOP_ID, SHARE_TIMES, 
       COUPON_TYPE, COUPON_VALUE, BACKUP_COLUMN1, 
       BACKUP_COLUMN2, IS_DELETE, CREATE_TIME, 
@@ -38,7 +38,7 @@
       #{backupColumn2,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{scanTimes,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.coupon" >
+  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.Coupon" >
     insert into COUPON
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="couponId != null" >
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeTicket.domain.coupon" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeTicket.domain.Coupon" >
     update COUPON
     <set >
       <if test="shopId != null" >
@@ -147,7 +147,7 @@
     </set>
     where COUPON_ID = #{couponId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.takeTicket.domain.coupon" >
+  <update id="updateByPrimaryKey" parameterType="com.example.takeTicket.domain.Coupon" >
     update COUPON
     set SHOP_ID = #{shopId,jdbcType=VARCHAR},
       SHARE_TIMES = #{shareTimes,jdbcType=DECIMAL},

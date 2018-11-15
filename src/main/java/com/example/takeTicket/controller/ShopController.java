@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.Shop;
-import com.example.takeTicket.exception.MilkTeaException;
+import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.ShopService;
 import com.example.takeTicket.util.HttpUtil;
 import com.example.takeTicket.vo.ResponseBody;
@@ -35,11 +35,11 @@ public class ShopController {
 
 	//按照分类及热点查询
     @RequestMapping(value="/selectbyconditions", method = RequestMethod.GET)
-    public ResponseBody<JSONObject> selectByConditions(@RequestParam("classId") String classId,@RequestParam("isHot") String isHot) throws MilkTeaException{
+    public ResponseBody<JSONObject> selectByConditions(@RequestParam("classId") String classId,@RequestParam("isHot") String isHot) throws CouponException {
 
 
 
-		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
+		Logger logger = LoggerFactory.getLogger(CustUserController.class);
 		ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
 		JSONObject jsonObject = new JSONObject();
 		String path = "http://localhost:8088/selectbyconditions"; 
@@ -69,7 +69,7 @@ public class ShopController {
     
     //按照模糊字符串查询店铺名
     @RequestMapping(value="/likeShopStr", method = RequestMethod.GET)
-    public ResponseBody<List<Shop>> likeShopStr(@RequestParam("shopStrYOUHUI") String shopStr) throws MilkTeaException{
+    public ResponseBody<List<Shop>> likeShopStr(@RequestParam("shopStrYOUHUI") String shopStr) throws CouponException {
 
     	ResponseBody<List<Shop>> responseBody = new ResponseBody<>();
     	responseBody.setData(shopService.likeShopStr(shopStr));
@@ -81,7 +81,7 @@ public class ShopController {
     
     //按照店铺名查找优惠
     @RequestMapping(value="/getShopIdfindCoupon", method = RequestMethod.GET)
-    public ResponseBody<List<Coupon>> getShopIdfindCoupon(@RequestParam("shopId") String shopId) throws MilkTeaException{
+    public ResponseBody<List<Coupon>> getShopIdfindCoupon(@RequestParam("shopId") String shopId) throws CouponException {
 
     	ResponseBody<List<Coupon>> responseBody = new ResponseBody<>();
     	responseBody.setData(shopService.getShopIdfindCoupon(shopId));
@@ -93,7 +93,7 @@ public class ShopController {
     
     //店铺游览次数+num
     @RequestMapping(value="/addScanTime", method = RequestMethod.GET)
-    public ResponseHeader addScanTime(@RequestParam("shopId") String shopId,@RequestParam("scanNum") BigDecimal scanNum) throws MilkTeaException{
+    public ResponseHeader addScanTime(@RequestParam("shopId") String shopId,@RequestParam("scanNum") BigDecimal scanNum) throws CouponException {
 
     	ResponseHeader responseHeader = new ResponseHeader();
     	shopService.addScanTime(shopId,scanNum);

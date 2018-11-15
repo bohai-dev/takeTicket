@@ -3,7 +3,6 @@ import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -182,12 +181,9 @@ public class HttpUtil {
 
         HttpPost httpPost = new HttpPost(url);
 
-        //RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(readTimeoutMs).setConnectTimeout(connectTimeoutMs).build();
-      //  httpPost.setConfig(requestConfig);
 
         StringEntity postEntity = new StringEntity(data, "UTF-8");
         httpPost.addHeader("Content-Type", "text/xml");
-      //  httpPost.addHeader("User-Agent", USER_AGENT + " " + config.getMchID());
         httpPost.setEntity(postEntity);
 
         HttpResponse httpResponse = httpClient.execute(httpPost);
