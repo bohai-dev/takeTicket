@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.takeTicket.dao.custCouponRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.custCouponRecord" >
+    <id column="CUST_COUPON_ID" property="custCouponId" jdbcType="VARCHAR" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" />
+    <result column="COUPON_ID" property="couponId" jdbcType="VARCHAR" />
+    <result column="SPEND_POINT" property="spendPoint" jdbcType="DECIMAL" />
+    <result column="COUPON_STATE" property="couponState" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="BAK_STR" property="bakStr" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CUST_COUPON_ID, CUST_ID, SHOP_ID, COUPON_ID, SPEND_POINT, COUPON_STATE, CREATE_TIME, 
+    BAK_STR, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CUST_COUPON_RECORD
+    where CUST_COUPON_ID = #{custCouponId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CUST_COUPON_RECORD
+    where CUST_COUPON_ID = #{custCouponId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.takeTicket.domain.custCouponRecord" >
+    insert into CUST_COUPON_RECORD (CUST_COUPON_ID, CUST_ID, SHOP_ID, 
+      COUPON_ID, SPEND_POINT, COUPON_STATE, 
+      CREATE_TIME, BAK_STR, UPDATE_TIME
+      )
+    values (#{custCouponId,jdbcType=VARCHAR}, #{custId,jdbcType=DECIMAL}, #{shopId,jdbcType=VARCHAR}, 
+      #{couponId,jdbcType=VARCHAR}, #{spendPoint,jdbcType=DECIMAL}, #{couponState,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{bakStr,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.custCouponRecord" >
+    insert into CUST_COUPON_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custCouponId != null" >
+        CUST_COUPON_ID,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="couponId != null" >
+        COUPON_ID,
+      </if>
+      <if test="spendPoint != null" >
+        SPEND_POINT,
+      </if>
+      <if test="couponState != null" >
+        COUPON_STATE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="bakStr != null" >
+        BAK_STR,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custCouponId != null" >
+        #{custCouponId,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="spendPoint != null" >
+        #{spendPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="couponState != null" >
+        #{couponState,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bakStr != null" >
+        #{bakStr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeTicket.domain.custCouponRecord" >
+    update CUST_COUPON_RECORD
+    <set >
+      <if test="custId != null" >
+        CUST_ID = #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponId != null" >
+        COUPON_ID = #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="spendPoint != null" >
+        SPEND_POINT = #{spendPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="couponState != null" >
+        COUPON_STATE = #{couponState,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bakStr != null" >
+        BAK_STR = #{bakStr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CUST_COUPON_ID = #{custCouponId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.takeTicket.domain.custCouponRecord" >
+    update CUST_COUPON_RECORD
+    set CUST_ID = #{custId,jdbcType=DECIMAL},
+      SHOP_ID = #{shopId,jdbcType=VARCHAR},
+      COUPON_ID = #{couponId,jdbcType=VARCHAR},
+      SPEND_POINT = #{spendPoint,jdbcType=DECIMAL},
+      COUPON_STATE = #{couponState,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      BAK_STR = #{bakStr,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where CUST_COUPON_ID = #{custCouponId,jdbcType=VARCHAR}
+  </update>
+</mapper>
