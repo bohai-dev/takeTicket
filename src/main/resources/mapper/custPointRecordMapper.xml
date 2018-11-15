@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.takeTicket.dao.custPointRecordMapper" >
-  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.custPointRecord" >
+  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.CustPointRecord" >
     <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
     <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" />
     <result column="POINT_NUMBER" property="pointNumber" jdbcType="DECIMAL" />
@@ -11,7 +11,7 @@
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="BAK_STR" property="bakStr" jdbcType="VARCHAR" />
   </resultMap>
-  <insert id="insert" parameterType="com.example.takeTicket.domain.custPointRecord" >
+  <insert id="insert" parameterType="com.example.takeTicket.domain.CustPointRecord" >
     insert into CUST_POINT_RECORD (CUST_ID, SHOP_ID, POINT_NUMBER, 
       POINT_SUB, POINT_STATE, CREATE_TIME, 
       UPDATE_TIME, BAK_STR)
@@ -19,7 +19,7 @@
       #{pointSub,jdbcType=DECIMAL}, #{pointState,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{bakStr,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.custPointRecord" >
+  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.CustPointRecord" >
     insert into CUST_POINT_RECORD
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="custId != null" >

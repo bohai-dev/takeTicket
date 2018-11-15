@@ -1,34 +1,43 @@
 package com.example.takeTicket.vo;
 
+import com.example.takeTicket.exception.CouponErrorConstant;
+
 public class ResponseHeader {
 
-    private String rspCode = "00000";
+    private String errorCode = CouponErrorConstant.SUCCESS.getErrorCode();
     
-    private String cnErrorMsg;
-    
-    private String usErrorMsg;
+    private String errorMsg=CouponErrorConstant.SUCCESS.getErrorMsg();
 
-    public String getRspCode() {
-        return rspCode;
+
+    public ResponseHeader() {
     }
 
-    public void setRspCode(String rspCode) {
-        this.rspCode = rspCode;
+    public ResponseHeader(String errorCode, String errorMsg) {
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
     }
 
-    public String getCnErrorMsg() {
-        return cnErrorMsg;
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public void setCnErrorMsg(String cnErrorMsg) {
-        this.cnErrorMsg = cnErrorMsg;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public String getUsErrorMsg() {
-        return usErrorMsg;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setUsErrorMsg(String usErrorMsg) {
-        this.usErrorMsg = usErrorMsg;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseHeader{" +
+                "errorCode='" + errorCode + '\'' +
+                ", errorMsg='" + errorMsg + '\'' +
+                '}';
     }
 }
