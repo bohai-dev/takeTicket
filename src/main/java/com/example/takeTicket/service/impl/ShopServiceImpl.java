@@ -30,7 +30,7 @@ public class ShopServiceImpl  implements ShopService {
 	public List<Shop> likeShopStr(String shopStr) {
 		List<Shop> listShop = new ArrayList<Shop>();
 		listShop = shopMapper.likeShopStr(shopStr);
-		return null;
+		return listShop;
 	}
 
 	@Override
