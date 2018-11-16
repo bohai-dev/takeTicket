@@ -39,7 +39,7 @@ public class ShopServiceImpl  implements ShopService {
 		
 		listCoupon = couponMapper.getShopIdfindCoupon(shopStr);
 		
-		return null;
+		return listCoupon;
 	}
 
 	@Override
