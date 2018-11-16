@@ -9,7 +9,11 @@ import org.springframework.stereotype.Component;
 
 //CommandLineRunner会在项目启动后自动执行，这里将它设置为只在 prod 环境下执行，是为了在本地单元测试的时候，让它不自动执行
 //@Profile("prod")
+<<<<<<< HEAD
 //@Component
+
+@Component
+
 public class GetToken implements CommandLineRunner{
 
 //	private static StringBuilder url=new StringBuilder("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential");
@@ -20,10 +24,13 @@ public class GetToken implements CommandLineRunner{
 //
 //	@Override
 	public void run(String... args) throws Exception {
+
 //		while(true) {
 //			netAccessToken();
 //			Thread.sleep(7000000);
 //		}
+
+
 		
 		
 	}

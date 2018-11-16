@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.takeTicket.exception.CouponErrorConstant;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,48 +25,53 @@ import com.example.takeTicket.service.ShopService;
 import com.example.takeTicket.util.HttpUtil;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequestMapping("/shopInfo")
 public class ShopController {
 
+	/** logger */
+	private static final Logger LOGGER = LoggerFactory.getLogger(ShopController.class);
+	
 	@Autowired
 	ShopService shopService;
+
 	
 
 	//按照分类及热点查询
     @RequestMapping(value="/selectbyconditions", method = RequestMethod.GET)
-    public ResponseBody<JSONObject> selectByConditions(@RequestParam("classId") String classId,@RequestParam("isHot") String isHot) throws CouponException {
+    public JSONObject selectByConditions(@RequestParam(value = "classId",required = false) String classId,@RequestParam(value = "isHot",required = false) String isHot) throws CouponException {
+		LOGGER.info("classId="+classId+",isHot="+isHot);
 
-
-
-		Logger logger = LoggerFactory.getLogger(CustUserController.class);
-		ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
-		JSONObject jsonObject = new JSONObject();
-		String path = "http://localhost:8088/selectbyconditions"; 
+		String httpUrl = "http://47.100.12.188:8088/export/shop/selectbyconditions";
+		Map<String,String> params=new HashMap<>();
+		if (StringUtils.isNotBlank(classId)){
+			params.put("classId",classId);
+		}
+		if (StringUtils.isNotBlank(isHot)){
+			params.put("isHot",isHot);
+		}
 
 		try {
+			String result=HttpUtil.post(httpUrl,params);
+			//ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
+			JSONObject jsonObject=JSON.parseObject(result);
 
-			HttpUtil HttpUtil = new HttpUtil();
-			Map<String,String> mapParam = new HashMap<String,String>();
-			if(!"".equals(classId)){
-				mapParam.put("classId", classId);
-			} else {
-				mapParam.put("isHot", isHot);
-			}
-			String retStr = HttpUtil.post(path, mapParam);
-			System.out.println(retStr);
-			jsonObject = JSON.parseObject(retStr);
-	        responseBody.setData(jsonObject);
-			
-          
+			//responseBody.setData(jsonObject);
+
+			return  jsonObject;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}  
-        
-		return responseBody;
+			throw new CouponException(CouponErrorConstant.UNKNOW_EXCEPTION);
+
+		}
+
+
+
+
+
     }
     
     //按照模糊字符串查询店铺名
