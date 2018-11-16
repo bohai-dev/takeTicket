@@ -21,6 +21,13 @@ public interface ShopService {
     List<Shop> likeShopStr(String  shopStr);
     
     /**
+     * 根据ID 查询店铺
+     * @param shop
+     * @return
+     */
+    Shop getShopInfo(String  shopId);
+    
+    /**
      * 按照店铺名查找优惠
      * @param shop
      * @return

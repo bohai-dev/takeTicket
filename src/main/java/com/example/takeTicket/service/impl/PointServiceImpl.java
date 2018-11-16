@@ -10,6 +10,7 @@ import com.example.takeTicket.dao.custCouponRecordMapper;
 import com.example.takeTicket.dao.custPointRecordMapper;
 import com.example.takeTicket.dao.getPointRecordMapper;
 import com.example.takeTicket.domain.CustPointRecord;
+import com.example.takeTicket.domain.GetPointRecord;
 import com.example.takeTicket.service.PointService;
 
 /**
@@ -61,6 +62,28 @@ public class PointServiceImpl  implements PointService {
 		//兑换时用，应该不可能存在记录没有的情况
 		custPointRecordMapper.subPoint(custId, shopId, subPointNum);
 		
+	}
+
+
+	@Override
+	public void addPointInfo(GetPointRecord getPointRecord) {
+		getPointRecordMapper.insertSelective(getPointRecord);
+		
+	}
+
+
+	@Override
+	public Integer checkPointInfo(GetPointRecord getPointRecord) {
+		GetPointRecord getPointRecordret = new GetPointRecord();
+		getPointRecordret = getPointRecordMapper.checkPointInfo(new BigDecimal(getPointRecord.getCustId()),getPointRecord.getShopId(),new BigDecimal(getPointRecord.getChildId()));
+		Integer retInt = new Integer(0);
+		
+		if("".equals(getPointRecordret.getCustId())){
+			//返回1为正确可以+1积分
+			return 1;
+		}
+		
+		return retInt;
 	}
 
 	

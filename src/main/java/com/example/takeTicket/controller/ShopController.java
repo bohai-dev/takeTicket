@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.takeTicket.exception.CouponErrorConstant;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +19,13 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.Shop;
+import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.ShopService;
 import com.example.takeTicket.util.HttpUtil;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
-import org.springframework.web.bind.annotation.RestController;
+
 
 
 @RestController
@@ -76,10 +76,22 @@ public class ShopController {
     
     //按照模糊字符串查询店铺名
     @RequestMapping(value="/likeShopStr", method = RequestMethod.GET)
-    public ResponseBody<List<Shop>> likeShopStr(@RequestParam("shopStrYOUHUI") String shopStr) throws CouponException {
+    public ResponseBody<List<Shop>> likeShopStr(@RequestParam("shopStr") String shopStr) throws CouponException {
 
     	ResponseBody<List<Shop>> responseBody = new ResponseBody<>();
     	responseBody.setData(shopService.likeShopStr(shopStr));
+    	
+    	return responseBody;
+    	
+    	
+    }
+    
+    //按照店铺ID
+    @RequestMapping(value="/getShopInfo", method = RequestMethod.GET)
+    public ResponseBody<Shop> getShopInfo(@RequestParam("shopId") String shopId) throws CouponException {
+
+    	ResponseBody<Shop> responseBody = new ResponseBody<>();
+    	responseBody.setData(shopService.getShopInfo(shopId));
     	
     	return responseBody;
     	

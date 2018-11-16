@@ -3,6 +3,7 @@ package com.example.takeTicket.service;
 import java.math.BigDecimal;
 
 import com.example.takeTicket.domain.CustPointRecord;
+import com.example.takeTicket.domain.GetPointRecord;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -31,4 +32,18 @@ public interface PointService {
      * @return
      */
 	void subPoint(String custId,String shopId,BigDecimal subPointNum);
+	
+	/**
+     * 记录客户积分明细
+     * @param shop
+     * @return
+     */
+	void addPointInfo(GetPointRecord getPointRecord);
+	
+	/**
+     * 判断是否是重复客户登入，重复客户登入时不应该积分
+     * @param shop
+     * @return
+     */
+	Integer checkPointInfo(GetPointRecord getPointRecord);
 }
