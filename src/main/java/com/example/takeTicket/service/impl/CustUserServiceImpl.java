@@ -22,8 +22,8 @@ import java.util.Date;
 @Service
 public class CustUserServiceImpl  implements CustUserService {
 
-    public static final String APPID="wx7ec0f9fe81204830";
-    public static final String SECRET="62ae1d4ed9ccee3d7a6c45f46bb0c05f";
+    public static final String APPID="wx9f9e25b68ad1c5be";
+    public static final String SECRET="96aad7edf71938c44a3ce94d0001fdf9";
 
     /** logger */
     private static final Logger LOGGER = LoggerFactory.getLogger(CustUserServiceImpl.class);

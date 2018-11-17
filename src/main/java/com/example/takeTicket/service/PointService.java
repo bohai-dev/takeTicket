@@ -46,4 +46,19 @@ public interface PointService {
      * @return
      */
 	Integer checkPointInfo(GetPointRecord getPointRecord);
+	
+	
+	/**
+     * 增加客户登入时积分入库明细
+     * @param shop
+     * @return
+     */
+	Integer addCheckPointInfo(GetPointRecord getPointRecord);
+	
+	/**
+     * 查询成功分享次数
+     * @param shop
+     * @return
+     */
+	Integer selectPointNum(String custId,String shopId);
 }

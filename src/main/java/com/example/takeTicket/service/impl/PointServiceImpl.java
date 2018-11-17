@@ -78,12 +78,36 @@ public class PointServiceImpl  implements PointService {
 		getPointRecordret = getPointRecordMapper.checkPointInfo(new BigDecimal(getPointRecord.getCustId()),getPointRecord.getShopId(),new BigDecimal(getPointRecord.getChildId()));
 		Integer retInt = new Integer(0);
 		
-		if("".equals(getPointRecordret.getCustId())){
+		if(null == getPointRecordret){
 			//返回1为正确可以+1积分
 			return 1;
 		}
 		
 		return retInt;
+	}
+
+
+	@Override
+	public Integer addCheckPointInfo(GetPointRecord getPointRecord) {
+		
+		if(checkPointInfo(getPointRecord) ==1 )
+		{
+		
+			getPointRecordMapper.insertSelective(getPointRecord);
+		}
+		
+	    
+		int reti = getPointRecordMapper.selectPointNum(new BigDecimal(getPointRecord.getCustId()), getPointRecord.getShopId());
+		
+		return reti;
+	}
+
+
+	@Override
+	public Integer selectPointNum(String custId, String shopId) {
+		int reti = getPointRecordMapper.selectPointNum(new BigDecimal(custId), shopId);
+		
+		return reti;
 	}
 
 	

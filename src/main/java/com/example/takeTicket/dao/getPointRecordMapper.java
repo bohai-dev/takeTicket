@@ -14,5 +14,8 @@ public interface getPointRecordMapper {
 
     @Select("select * from GET_POINT_RECORD where CUST_ID = #{custId} and SHOP_ID = #{shopId} and CHILD_ID = #{childId} and RECORD_FLG = 0")
     GetPointRecord checkPointInfo(@Param("custId") BigDecimal custId,@Param("shopId") String shopId,@Param("childId") BigDecimal childId);
+    
+    @Select("select count(*) as num from GET_POINT_RECORD where CUST_ID = #{custId} and SHOP_ID = #{shopId}")
+    int selectPointNum(@Param("custId") BigDecimal custId,@Param("shopId") String shopId);
 
 }
