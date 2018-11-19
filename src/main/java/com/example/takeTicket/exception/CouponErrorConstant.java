@@ -11,6 +11,7 @@ public enum CouponErrorConstant {
 
     LOGIN_WEIXIN_ERROR("0001","微信登录异常"),
 
+    ADMIN_LOGIN_ERROR("0002","用户名或密码错误"),
     
 
 
