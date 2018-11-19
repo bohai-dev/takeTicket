@@ -2,7 +2,7 @@ package com.example.takeTicket.dao;
 
 import com.example.takeTicket.domain.CustCouponRecord;
 
-public interface custCouponRecordMapper {
+public interface CustCouponRecordMapper {
     int deleteByPrimaryKey(String custCouponId);
 
     int insert(CustCouponRecord record);

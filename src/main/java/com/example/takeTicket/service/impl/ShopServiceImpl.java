@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.takeTicket.dao.ShopMapper;
-import com.example.takeTicket.dao.couponMapper;
+import com.example.takeTicket.dao.CouponMapper;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.Shop;
 import com.example.takeTicket.service.ShopService;
@@ -24,7 +24,7 @@ public class ShopServiceImpl  implements ShopService {
     ShopMapper shopMapper;
 
     @Autowired
-    couponMapper couponMapper;
+    CouponMapper couponMapper;
 
 	@Override
 	public List<Shop> likeShopStr(String shopStr) {

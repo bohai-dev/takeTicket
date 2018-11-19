@@ -14,7 +14,7 @@ public class CustCouponRecord {
 
     private BigDecimal spendPoint;
 
-    private Short couponState;
+    private Integer couponState;
 
     private Date createTime;
 
@@ -62,11 +62,11 @@ public class CustCouponRecord {
         this.spendPoint = spendPoint;
     }
 
-    public Short getCouponState() {
+    public Integer getCouponState() {
         return couponState;
     }
 
-    public void setCouponState(Short couponState) {
+    public void setCouponState(Integer couponState) {
         this.couponState = couponState;
     }
 
