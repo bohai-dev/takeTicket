@@ -93,7 +93,11 @@ public class PointServiceImpl  implements PointService {
 		if(checkPointInfo(getPointRecord) ==1 )
 		{
 		
+			//明细加一
 			getPointRecordMapper.insertSelective(getPointRecord);
+			
+			//客户合计POINT+ 1
+			custPointRecordMapper.addPoint(String.valueOf(getPointRecord.getCustId()), getPointRecord.getShopId(), new BigDecimal(1));
 		}
 		
 	    
