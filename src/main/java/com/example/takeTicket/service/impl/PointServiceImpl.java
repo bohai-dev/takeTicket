@@ -7,7 +7,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.takeTicket.dao.custCouponRecordMapper;
+import com.example.takeTicket.dao.CustCouponRecordMapper;
 import com.example.takeTicket.dao.custPointRecordMapper;
 import com.example.takeTicket.dao.getPointRecordMapper;
 import com.example.takeTicket.domain.CustPointRecord;
@@ -21,7 +21,7 @@ import com.example.takeTicket.service.PointService;
 public class PointServiceImpl  implements PointService {
 
     @Autowired
-    custCouponRecordMapper custCouponRecordMapper;
+    CustCouponRecordMapper custCouponRecordMapper;
 
     @Autowired
     custPointRecordMapper custPointRecordMapper;

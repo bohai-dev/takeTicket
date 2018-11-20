@@ -14,7 +14,7 @@ import com.aliyun.oss.model.CompleteMultipartUploadResult;
 import com.aliyun.oss.model.UploadFileRequest;
 import com.aliyun.oss.model.UploadFileResult;
 import com.example.takeTicket.dao.CouponMapper;
-import com.example.takeTicket.dao.custCouponRecordMapper;
+import com.example.takeTicket.dao.CustCouponRecordMapper;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.CustCouponRecord;
 import com.example.takeTicket.exception.CouponErrorConstant;
@@ -41,7 +41,7 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
     CouponMapper couponMapper;
 
     @Autowired
-    custCouponRecordMapper custCouponRecordMapper;
+    CustCouponRecordMapper custCouponRecordMapper;
 
 	@Override
 	public CustCouponRecord custChangeCoupon(String custId, String shopId, String couponId) throws CouponException {
@@ -55,7 +55,7 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		custCouponRecordRet.setShopId(shopId);
 		custCouponRecordRet.setCouponId(couponId);
 		custCouponRecordRet.setCreateTime(new Date());
-		custCouponRecordRet.setCouponState(Short.valueOf("0"));
+		custCouponRecordRet.setCouponState(0);
 		
 		Coupon coupon = couponMapper.selectByPrimaryKey(couponId);
 		

@@ -1,5 +1,7 @@
 package com.example.takeTicket.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Shop {
@@ -39,8 +41,10 @@ public class Shop {
 
     private String isHot;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updataTime;
 
     private String warmPrompt;
