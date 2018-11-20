@@ -9,19 +9,20 @@ import org.springframework.stereotype.Service;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.CompleteMultipartUploadResult;
 import com.aliyun.oss.model.UploadFileRequest;
 import com.aliyun.oss.model.UploadFileResult;
 import com.example.takeTicket.dao.CouponMapper;
 import com.example.takeTicket.dao.CustCouponRecordMapper;
+import com.example.takeTicket.dao.custPointRecordMapper;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.CustCouponRecord;
 import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.ChangeCouponService;
 import com.example.takeTicket.util.QrCode;
-import com.aliyun.oss.OSSClientBuilder;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -42,6 +43,9 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 
     @Autowired
     CustCouponRecordMapper custCouponRecordMapper;
+    
+    @Autowired
+    custPointRecordMapper custPointRecordMapper;
 
 	@Override
 	public CustCouponRecord custChangeCoupon(String custId, String shopId, String couponId) throws CouponException {
@@ -78,6 +82,11 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		custCouponRecordRet.setSpendPoint(spendPoint);
 		
 		custCouponRecordMapper.insertSelective(custCouponRecordRet);
+		
+		//用户积分扣除
+		custPointRecordMapper.subPoint(custId, shopId, spendPoint);
+		
+		
 		
 		return custCouponRecordRet;
 	}
