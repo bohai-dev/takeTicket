@@ -1,5 +1,7 @@
 package com.example.takeTicket.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,10 +23,12 @@ public class UserCoupon {
 
     private Integer couponState;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String bakStr;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     private String couponType;

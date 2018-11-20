@@ -13,7 +13,7 @@ public enum CouponErrorConstant {
 
     ADMIN_LOGIN_ERROR("0002","用户名或密码错误"),
     COUPON_NOT_EXISTS_ERROR("0003","该优惠券不存在"),
-    COUPON_USED_ERROR("0004","该优惠券不存在"),
+    COUPON_USED_ERROR("0004","该优惠券已被使用"),
 
 
 
