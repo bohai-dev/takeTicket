@@ -1,5 +1,14 @@
 package com.example.takeTicket.service.impl;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.takeTicket.dao.CouponMapper;
 import com.example.takeTicket.dao.CustCouponRecordMapper;
 import com.example.takeTicket.domain.Coupon;
@@ -7,13 +16,7 @@ import com.example.takeTicket.domain.CustCouponRecord;
 import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.UserCouponService;
-import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.UserCoupon;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.Date;
 
 /**
  * Created by cxy on 2018/11/19
@@ -72,4 +75,13 @@ public class UserCouponServiceImpl implements UserCouponService {
 
         return userCoupon;
     }
+
+	@Override
+	public List<CustCouponRecord> selectCouponListByCust(String userId, String couponStatus) throws CouponException {
+		List<CustCouponRecord> listCustCouponRecord = new ArrayList<>();
+		
+		listCustCouponRecord = custCouponMapper.selectCouponListByCust(userId,new BigDecimal(couponStatus));
+		
+		return listCustCouponRecord;
+	}
 }
