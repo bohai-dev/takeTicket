@@ -77,10 +77,10 @@ public class UserCouponServiceImpl implements UserCouponService {
     }
 
 	@Override
-	public List<CustCouponRecord> selectCouponListByCust(String userId, String couponStatus) throws CouponException {
+	public List<CustCouponRecord> selectCouponListByCust(String custId, String couponStatus) throws CouponException {
 		List<CustCouponRecord> listCustCouponRecord = new ArrayList<>();
 		
-		listCustCouponRecord = custCouponMapper.selectCouponListByCust(userId,new BigDecimal(couponStatus));
+		listCustCouponRecord = custCouponMapper.selectCouponListByCust(custId,new BigDecimal(couponStatus));
 		
 		return listCustCouponRecord;
 	}
