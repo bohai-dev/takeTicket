@@ -25,6 +25,8 @@ public class Coupon {
 
     private Long scanTimes;
 
+    private Long exchangeTimes;
+
     public String getCouponId() {
         return couponId;
     }
@@ -111,5 +113,13 @@ public class Coupon {
 
     public void setScanTimes(Long scanTimes) {
         this.scanTimes = scanTimes;
+    }
+
+    public Long getExchangeTimes() {
+        return exchangeTimes;
+    }
+
+    public void setExchangeTimes(Long exchangeTimes) {
+        this.exchangeTimes = exchangeTimes;
     }
 }

@@ -2,6 +2,7 @@ package com.example.takeTicket.service.impl;
 
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,8 +97,27 @@ public class PointServiceImpl  implements PointService {
 			//明细加一
 			getPointRecordMapper.insertSelective(getPointRecord);
 			
-			//客户合计POINT+ 1
-			custPointRecordMapper.addPoint(String.valueOf(getPointRecord.getCustId()), getPointRecord.getShopId(), new BigDecimal(1));
+			//先SELECT 如果没有则 insert
+			CustPointRecord custPointRecord = new CustPointRecord();
+			custPointRecord = custPointRecordMapper.getPoint(String.valueOf(getPointRecord.getCustId()),getPointRecord.getShopId());
+			
+			if(null == custPointRecord){
+				custPointRecord = new CustPointRecord();
+				custPointRecord.setCustId(getPointRecord.getCustId());
+				custPointRecord.setShopId(getPointRecord.getShopId());
+				custPointRecord.setPointNumber(new BigDecimal(1));
+				custPointRecord.setPointSub(new BigDecimal(0));
+				custPointRecord.setCreateTime(new Date());
+				custPointRecord.setBakStr("");
+				
+				
+				custPointRecordMapper.insertSelective(custPointRecord);
+			} else {
+				//客户合计POINT+ 1
+				custPointRecordMapper.addPoint(String.valueOf(getPointRecord.getCustId()), getPointRecord.getShopId(), new BigDecimal(1));
+			}
+			
+			
 		}
 		
 	    

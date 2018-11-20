@@ -6,7 +6,7 @@
 	<!--该文件在后续版本中不要提交-->
     <!-- classPathEntry:数据库的JDBC驱动的jar包地址,请用自己本地的替换 -->
 	<classPathEntry
-		location="C:\Users\cxy\.m2\repository\com\oracle\ojdbc6\11.2.0\ojdbc6-11.2.0.jar" />
+		location="C:\Users\john\.m2\repository\ojdbc6\ojdbc6\6\ojdbc6-6.jar" />
 
 
 
@@ -47,7 +47,7 @@
 
 
 
-		<table schema="" tableName="CUST_USER" domainObjectName="CustUser"
+		<table schema="" tableName="COUPON" domainObjectName="Coupon"
 			enableSelectByExample="false" enableDeleteByExample="false"
 			enableCountByExample="false" enableUpdateByExample="false"
 			selectByExampleQueryId="false">

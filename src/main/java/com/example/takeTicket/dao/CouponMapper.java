@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.example.takeTicket.domain.Coupon;
 
-public interface couponMapper {
+public interface CouponMapper {
     int deleteByPrimaryKey(String couponId);
 
     int insert(Coupon record);

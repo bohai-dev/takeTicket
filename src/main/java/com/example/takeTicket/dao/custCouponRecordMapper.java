@@ -1,5 +1,7 @@
 package com.example.takeTicket.dao;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.example.takeTicket.domain.CustCouponRecord;
 
 public interface custCouponRecordMapper {
@@ -14,4 +16,8 @@ public interface custCouponRecordMapper {
     int updateByPrimaryKeySelective(CustCouponRecord record);
 
     int updateByPrimaryKey(CustCouponRecord record);
+    
+    @Select("select CUST_COUPON_ID_SEQ.nextval from dual")
+    int selCustCouponIDSeq();
+    
 }
