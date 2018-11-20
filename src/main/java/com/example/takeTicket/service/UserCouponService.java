@@ -33,5 +33,5 @@ public interface UserCouponService {
      * @return
      * @throws CouponException
      */
-    List<CustCouponRecord> selectCouponListByCust(String userId,String couponStatus) throws CouponException;
+    List<CustCouponRecord> selectCouponListByCust(String custId,String couponStatus) throws CouponException;
 }

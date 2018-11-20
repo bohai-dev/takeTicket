@@ -62,10 +62,10 @@ public class UserCouponController {
      * @throws CouponException
      */
     @RequestMapping(value = "/selectCouponListByCust",method = RequestMethod.GET)
-    public ResponseBody<List<CustCouponRecord>> selectCouponListByCust(@RequestParam("userId")String userId,@RequestParam("couponStatus")String couponStatus)  throws CouponException{
+    public ResponseBody<List<CustCouponRecord>> selectCouponListByCust(@RequestParam("custId")String custId,@RequestParam("couponStatus")String couponStatus)  throws CouponException{
         ResponseBody<List<CustCouponRecord>> responseBody=new ResponseBody<>();
        
-        responseBody.setData(userCouponService.selectCouponListByCust(userId, couponStatus));
+        responseBody.setData(userCouponService.selectCouponListByCust(custId, couponStatus));
 
         return responseBody;
 
