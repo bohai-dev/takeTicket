@@ -24,3 +24,4 @@
 /nbdist/
 /.nb-gradle/
 /pom.xml
+/src/main/resources/generatorConfig.xml
