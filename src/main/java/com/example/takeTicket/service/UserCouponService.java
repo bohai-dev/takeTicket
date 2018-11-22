@@ -23,7 +23,7 @@ public interface UserCouponService {
      * @return
      * @throws CouponException
      */
-    UserCoupon selectById(String userCouponId) throws CouponException;
+    UserCoupon selectById(String userCouponId,String shopId) throws CouponException;
     
     /**
      * 查询客户优惠券一览

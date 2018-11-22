@@ -17,6 +17,7 @@ public enum CouponErrorConstant {
     POINT_LACK_ERROR("0006","积分不足不能兑换！"),
 
 
+    COUPON_ERROR_SHOP("0010","请扫描自己店铺的优惠券"),
     UNKNOW_EXCEPTION("1000", "程序内部异常" );
     
     final String errorCode;

@@ -58,12 +58,16 @@ public class UserCouponServiceImpl implements UserCouponService {
      * @throws CouponException
      */
     @Override
-    public UserCoupon selectById(String userCouponId) throws CouponException{
+    public UserCoupon selectById(String userCouponId,String shopId) throws CouponException{
 
 
         CustCouponRecord custCoupon=custCouponMapper.selectByPrimaryKey(userCouponId);
         if (custCoupon==null){
             throw new CouponException(CouponErrorConstant.COUPON_NOT_EXISTS_ERROR);
+        }
+        String couponShopId=custCoupon.getShopId();
+        if (!shopId.equals(couponShopId)){
+            throw new CouponException(CouponErrorConstant.COUPON_ERROR_SHOP);
         }
         UserCoupon userCoupon=new UserCoupon();
         BeanUtils.copyProperties(custCoupon,userCoupon);

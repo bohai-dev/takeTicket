@@ -46,9 +46,9 @@ public class UserCouponController {
      * @throws CouponException
      */
     @RequestMapping(value = "/selectbyid",method = RequestMethod.GET)
-    public ResponseBody<UserCoupon> selectById(@RequestParam("userCouponId")String userCouponId)  throws CouponException{
+    public ResponseBody<UserCoupon> selectById(@RequestParam("userCouponId")String userCouponId,@RequestParam("shopId")String shopId)  throws CouponException{
         ResponseBody<UserCoupon> responseBody=new ResponseBody<>();
-        UserCoupon userCoupon=userCouponService.selectById(userCouponId);
+        UserCoupon userCoupon=userCouponService.selectById(userCouponId,shopId);
         responseBody.setData(userCoupon);
 
         return responseBody;
