@@ -33,7 +33,7 @@ public class PointServiceImpl  implements PointService {
 	@Override
 	public CustPointRecord getPoint(String custId, String shopId) {
 		CustPointRecord custPointRecordRet = new CustPointRecord();
-		custPointRecordRet = custPointRecordMapper.getPoint(custId, shopId);
+		custPointRecordRet = custPointRecordMapper.getPoint(new BigDecimal(custId), shopId);
 		return custPointRecordRet;
 	}
 
@@ -47,10 +47,12 @@ public class PointServiceImpl  implements PointService {
 			custPointRecordRet.setCustId(Long.valueOf(custId));
 			custPointRecordRet.setPointNumber(pointNum);
 			custPointRecordRet.setShopId(shopId);
+			Short i = 0;
+			custPointRecordRet.setPointState(i);
 			custPointRecordMapper.insertSelective(custPointRecordRet);
 		} else {
 			//更新记录
-			custPointRecordMapper.addPoint(custId, shopId, pointNum);
+			custPointRecordMapper.addPoint(new BigDecimal(custId), shopId, pointNum);
 		}
 		
 		
@@ -61,7 +63,7 @@ public class PointServiceImpl  implements PointService {
 	public void subPoint(String custId, String shopId, BigDecimal subPointNum) {
 		
 		//兑换时用，应该不可能存在记录没有的情况
-		custPointRecordMapper.subPoint(custId, shopId, subPointNum);
+		custPointRecordMapper.subPoint(new BigDecimal(custId), shopId, subPointNum);
 		
 	}
 
@@ -75,6 +77,7 @@ public class PointServiceImpl  implements PointService {
 
 	@Override
 	public Integer checkPointInfo(GetPointRecord getPointRecord) {
+		System.out.println("CustId():" + getPointRecord.getCustId() + "|ShopId():" + getPointRecord.getShopId() + "|ChildId():" + getPointRecord.getChildId());
 		GetPointRecord getPointRecordret = new GetPointRecord();
 		getPointRecordret = getPointRecordMapper.checkPointInfo(new BigDecimal(getPointRecord.getCustId()),getPointRecord.getShopId(),new BigDecimal(getPointRecord.getChildId()));
 		Integer retInt = new Integer(0);
@@ -94,12 +97,14 @@ public class PointServiceImpl  implements PointService {
 		if(checkPointInfo(getPointRecord) ==1 )
 		{
 		
+			System.out.println("CustId():" + getPointRecord.getCustId() + "|ShopId():" + getPointRecord.getShopId() + "|ChildId():" + getPointRecord.getChildId());
+			
 			//明细加一
 			getPointRecordMapper.insertSelective(getPointRecord);
 			
 			//先SELECT 如果没有则 insert
 			CustPointRecord custPointRecord = new CustPointRecord();
-			custPointRecord = custPointRecordMapper.getPoint(String.valueOf(getPointRecord.getCustId()),getPointRecord.getShopId());
+			custPointRecord = custPointRecordMapper.getPoint(new BigDecimal(getPointRecord.getCustId()),getPointRecord.getShopId());
 			
 			if(null == custPointRecord){
 				custPointRecord = new CustPointRecord();
@@ -108,13 +113,15 @@ public class PointServiceImpl  implements PointService {
 				custPointRecord.setPointNumber(new BigDecimal(1));
 				custPointRecord.setPointSub(new BigDecimal(0));
 				custPointRecord.setCreateTime(new Date());
+				Short i = 0;
+				custPointRecord.setPointState(i);
 				custPointRecord.setBakStr("");
 				
 				
 				custPointRecordMapper.insertSelective(custPointRecord);
 			} else {
 				//客户合计POINT+ 1
-				custPointRecordMapper.addPoint(String.valueOf(getPointRecord.getCustId()), getPointRecord.getShopId(), new BigDecimal(1));
+				custPointRecordMapper.addPoint(new BigDecimal(getPointRecord.getCustId()), getPointRecord.getShopId(), new BigDecimal(1));
 			}
 			
 			

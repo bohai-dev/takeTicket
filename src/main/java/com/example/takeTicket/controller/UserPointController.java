@@ -142,7 +142,7 @@ public class UserPointController {
 		return ret;
     }
     
-  // 查询成功分享次数
+    // 查询成功分享次数
     @RequestMapping(value="/selectPointNum", method = RequestMethod.GET)
     public ResponseBody<Integer> selectPointNum(@RequestParam("custId") String custId,@RequestParam("shopId") String shopId) throws CouponException {
 		Logger logger = LoggerFactory.getLogger(CustUserController.class);
@@ -154,7 +154,8 @@ public class UserPointController {
 		
 		return ret;
     }
-   
+    
+    
 
 
 }

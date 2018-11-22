@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.takeTicket.domain.CustCouponRecord;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.UserCouponService;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
 import com.example.takeTicket.vo.UserCoupon;
+import com.example.takeTicket.vo.UserCouponAllInfoVo;
 
 /**
  * Created by cxy on 2018/11/19
@@ -62,8 +62,8 @@ public class UserCouponController {
      * @throws CouponException
      */
     @RequestMapping(value = "/selectCouponListByCust",method = RequestMethod.GET)
-    public ResponseBody<List<CustCouponRecord>> selectCouponListByCust(@RequestParam("custId")String custId,@RequestParam("couponStatus")String couponStatus)  throws CouponException{
-        ResponseBody<List<CustCouponRecord>> responseBody=new ResponseBody<>();
+    public ResponseBody<List<UserCouponAllInfoVo>> selectCouponListByCust(@RequestParam("custId")String custId,@RequestParam("couponStatus")String couponStatus)  throws CouponException{
+        ResponseBody<List<UserCouponAllInfoVo>> responseBody=new ResponseBody<>();
        
         responseBody.setData(userCouponService.selectCouponListByCust(custId, couponStatus));
 

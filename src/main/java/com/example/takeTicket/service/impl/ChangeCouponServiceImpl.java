@@ -19,6 +19,7 @@ import com.example.takeTicket.dao.CustCouponRecordMapper;
 import com.example.takeTicket.dao.custPointRecordMapper;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.CustCouponRecord;
+import com.example.takeTicket.domain.CustPointRecord;
 import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.ChangeCouponService;
@@ -49,7 +50,31 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 
 	@Override
 	public CustCouponRecord custChangeCoupon(String custId, String shopId, String couponId) throws CouponException {
+		
+		
 		CustCouponRecord custCouponRecordRet = new CustCouponRecord();
+		
+		Coupon coupon = couponMapper.selectByPrimaryKey(couponId);
+		
+		BigDecimal spendPoint = new BigDecimal(0);
+		spendPoint = BigDecimal.valueOf(coupon.getExchangeTimes());
+		
+		//CHECK 积分是否够如果不够则报错
+		CustPointRecord custPointRecordRet = new CustPointRecord();
+		custPointRecordRet = custPointRecordMapper.getPoint(new BigDecimal(custId), shopId);
+		if(null == custPointRecordRet){
+			// 没有积分记录的场合
+			throw new CouponException(CouponErrorConstant.POINT_LACK_ERROR);
+		}
+		BigDecimal vaildPoint = custPointRecordRet.getPointNumber().subtract(custPointRecordRet.getPointSub());
+		int usedPoint = vaildPoint.subtract(spendPoint).intValue();
+		
+		if( usedPoint < 0){
+			// 积分不足的场合
+			throw new CouponException(CouponErrorConstant.POINT_LACK_ERROR);
+		}
+		
+		
 		
 		//得到唯一SEQ
 		int reti = custCouponRecordMapper.selCustCouponIDSeq();
@@ -61,10 +86,7 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		custCouponRecordRet.setCreateTime(new Date());
 		custCouponRecordRet.setCouponState(0);
 		
-		Coupon coupon = couponMapper.selectByPrimaryKey(couponId);
 		
-		BigDecimal spendPoint = new BigDecimal(0);
-		spendPoint = BigDecimal.valueOf(coupon.getExchangeTimes());
 		String qrCodePngPath = "";
 		//生成二维码图片
 		try {
@@ -84,7 +106,7 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		custCouponRecordMapper.insertSelective(custCouponRecordRet);
 		
 		//用户积分扣除
-		custPointRecordMapper.subPoint(custId, shopId, spendPoint);
+		custPointRecordMapper.subPoint(new BigDecimal(custId), shopId, spendPoint);
 		
 		
 		
