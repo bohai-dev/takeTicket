@@ -41,6 +41,8 @@ public class UserCouponAllInfoVo {
     private String isDelete;
 
     private Long exchangeTimes;
+    
+    private String shopName;
 
 	public String getCustCouponId() {
 		return custCouponId;
@@ -160,6 +162,14 @@ public class UserCouponAllInfoVo {
 
 	public void setExchangeTimes(Long exchangeTimes) {
 		this.exchangeTimes = exchangeTimes;
+	}
+
+	public String getShopName() {
+		return shopName;
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
     
     
