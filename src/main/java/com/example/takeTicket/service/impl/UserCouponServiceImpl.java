@@ -17,6 +17,7 @@ import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.UserCouponService;
 import com.example.takeTicket.vo.UserCoupon;
+import com.example.takeTicket.vo.UserCouponAllInfoVo;
 
 /**
  * Created by cxy on 2018/11/19
@@ -77,8 +78,8 @@ public class UserCouponServiceImpl implements UserCouponService {
     }
 
 	@Override
-	public List<CustCouponRecord> selectCouponListByCust(String custId, String couponStatus) throws CouponException {
-		List<CustCouponRecord> listCustCouponRecord = new ArrayList<>();
+	public List<UserCouponAllInfoVo> selectCouponListByCust(String custId, String couponStatus) throws CouponException {
+		List<UserCouponAllInfoVo> listCustCouponRecord = new ArrayList<>();
 		
 		listCustCouponRecord = custCouponMapper.selectCouponListByCust(custId,new BigDecimal(couponStatus));
 		

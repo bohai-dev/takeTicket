@@ -16,6 +16,7 @@ public enum CouponErrorConstant {
     COUPON_NOT_EXISTS_ERROR("0003","该优惠券不存在"),
     COUPON_USED_ERROR("0004","该优惠券已被使用"),
     QRCODE_PNG_ERROR("0005","二维码生成PNG图片错误"),
+    POINT_LACK_ERROR("0006","积分不足不能兑换！"),
 
 
     UNKNOW_EXCEPTION("1000", "程序内部异常" );

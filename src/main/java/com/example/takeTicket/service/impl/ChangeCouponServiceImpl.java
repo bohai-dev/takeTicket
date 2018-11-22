@@ -9,19 +9,21 @@ import org.springframework.stereotype.Service;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.CompleteMultipartUploadResult;
 import com.aliyun.oss.model.UploadFileRequest;
 import com.aliyun.oss.model.UploadFileResult;
 import com.example.takeTicket.dao.CouponMapper;
 import com.example.takeTicket.dao.CustCouponRecordMapper;
+import com.example.takeTicket.dao.custPointRecordMapper;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.CustCouponRecord;
+import com.example.takeTicket.domain.CustPointRecord;
 import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.ChangeCouponService;
 import com.example.takeTicket.util.QrCode;
-import com.aliyun.oss.OSSClientBuilder;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -42,10 +44,37 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 
     @Autowired
     CustCouponRecordMapper custCouponRecordMapper;
+    
+    @Autowired
+    custPointRecordMapper custPointRecordMapper;
 
 	@Override
 	public CustCouponRecord custChangeCoupon(String custId, String shopId, String couponId) throws CouponException {
+		
+		
 		CustCouponRecord custCouponRecordRet = new CustCouponRecord();
+		
+		Coupon coupon = couponMapper.selectByPrimaryKey(couponId);
+		
+		BigDecimal spendPoint = new BigDecimal(0);
+		spendPoint = BigDecimal.valueOf(coupon.getExchangeTimes());
+		
+		//CHECK 积分是否够如果不够则报错
+		CustPointRecord custPointRecordRet = new CustPointRecord();
+		custPointRecordRet = custPointRecordMapper.getPoint(new BigDecimal(custId), shopId);
+		if(null == custPointRecordRet){
+			// 没有积分记录的场合
+			throw new CouponException(CouponErrorConstant.POINT_LACK_ERROR);
+		}
+		BigDecimal vaildPoint = custPointRecordRet.getPointNumber().subtract(custPointRecordRet.getPointSub());
+		int usedPoint = vaildPoint.subtract(spendPoint).intValue();
+		
+		if( usedPoint < 0){
+			// 积分不足的场合
+			throw new CouponException(CouponErrorConstant.POINT_LACK_ERROR);
+		}
+		
+		
 		
 		//得到唯一SEQ
 		int reti = custCouponRecordMapper.selCustCouponIDSeq();
@@ -57,10 +86,7 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		custCouponRecordRet.setCreateTime(new Date());
 		custCouponRecordRet.setCouponState(0);
 		
-		Coupon coupon = couponMapper.selectByPrimaryKey(couponId);
 		
-		BigDecimal spendPoint = new BigDecimal(0);
-		spendPoint = BigDecimal.valueOf(coupon.getExchangeTimes());
 		String qrCodePngPath = "";
 		//生成二维码图片
 		try {
@@ -78,6 +104,11 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		custCouponRecordRet.setSpendPoint(spendPoint);
 		
 		custCouponRecordMapper.insertSelective(custCouponRecordRet);
+		
+		//用户积分扣除
+		custPointRecordMapper.subPoint(new BigDecimal(custId), shopId, spendPoint);
+		
+		
 		
 		return custCouponRecordRet;
 	}
