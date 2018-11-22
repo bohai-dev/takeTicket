@@ -24,7 +24,7 @@ import com.example.takeTicket.vo.ResponseHeader;
 
 
 @RestController
-@RequestMapping("/UserShare")
+@RequestMapping("/custShare")
 public class CustShareController {
 
 	@Autowired

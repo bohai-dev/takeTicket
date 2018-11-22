@@ -21,7 +21,7 @@ public interface ShopMapper {
     int updateByPrimaryKeySelective(Shop record);
 
     int updateByPrimaryKey(Shop record);
-
+    
     //根据userId查询店铺
     @Select("select * from SHOP where ADMIN_USER_ID=#{adminUserId}")
     Shop selectByAdminUserId(@Param("adminUserId")String adminUserId);

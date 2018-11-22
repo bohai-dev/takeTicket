@@ -1,7 +1,5 @@
 package com.example.takeTicket.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class Shop {
@@ -41,15 +39,17 @@ public class Shop {
 
     private String isHot;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updataTime;
 
     private String warmPrompt;
 
     private String isDelete;
+
+    private String flowTitle;
+
+    private String flowContent;
 
     public String getShopId() {
         return shopId;
@@ -225,5 +225,21 @@ public class Shop {
 
     public void setIsDelete(String isDelete) {
         this.isDelete = isDelete == null ? null : isDelete.trim();
+    }
+
+    public String getFlowTitle() {
+        return flowTitle;
+    }
+
+    public void setFlowTitle(String flowTitle) {
+        this.flowTitle = flowTitle == null ? null : flowTitle.trim();
+    }
+
+    public String getFlowContent() {
+        return flowContent;
+    }
+
+    public void setFlowContent(String flowContent) {
+        this.flowContent = flowContent == null ? null : flowContent.trim();
     }
 }
