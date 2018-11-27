@@ -45,7 +45,7 @@ public class ShopController {
     public JSONObject selectByConditions(@RequestParam(value = "classId",required = false) String classId,@RequestParam(value = "isHot",required = false) String isHot) throws CouponException {
 		LOGGER.info("classId="+classId+",isHot="+isHot);
 
-		String httpUrl = "http://47.100.12.188:8088/export/shop/selectbyconditions";
+		String httpUrl = "http://127.0.0.1:8088/export/shop/selectbyconditions";
 		Map<String,String> params=new HashMap<>();
 		if (StringUtils.isNotBlank(classId)){
 			params.put("classId",classId);

@@ -51,6 +51,10 @@ public class Shop {
 
     private String flowContent;
 
+    private String longitude;
+
+    private String latitude;
+
     public String getShopId() {
         return shopId;
     }
@@ -241,5 +245,21 @@ public class Shop {
 
     public void setFlowContent(String flowContent) {
         this.flowContent = flowContent == null ? null : flowContent.trim();
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude == null ? null : longitude.trim();
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude == null ? null : latitude.trim();
     }
 }

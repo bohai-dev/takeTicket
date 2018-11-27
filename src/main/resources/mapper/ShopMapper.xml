@@ -26,12 +26,14 @@
     <result column="IS_DELETE" property="isDelete" jdbcType="VARCHAR" />
     <result column="FLOW_TITLE" property="flowTitle" jdbcType="VARCHAR" />
     <result column="FLOW_CONTENT" property="flowContent" jdbcType="VARCHAR" />
+    <result column="LONGITUDE" property="longitude" jdbcType="VARCHAR" />
+    <result column="LATITUDE" property="latitude" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     SHOP_ID, SHOP_NAME, INTRO_IMAGES, SHOP_ADDRESS, CONTACT_WAY, FEATURES, SHOP_INTRO, 
     OPEN_TIME, HEIGHT_TIME, INDOOR_DEVICE, SIGN_DISH, SHOP_ACTIVITY, SCAN_TIMES, ADMIN_USER_ID, 
     SIMPLE_INTRO, BACKUP_COUMN2, CLASS_ID, IS_HOT, CREATE_TIME, UPDATA_TIME, WARM_PROMPT, 
-    IS_DELETE, FLOW_TITLE, FLOW_CONTENT
+    IS_DELETE, FLOW_TITLE, FLOW_CONTENT, LONGITUDE, LATITUDE
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -51,8 +53,8 @@
       SCAN_TIMES, ADMIN_USER_ID, SIMPLE_INTRO, 
       BACKUP_COUMN2, CLASS_ID, IS_HOT, 
       CREATE_TIME, UPDATA_TIME, WARM_PROMPT, 
-      IS_DELETE, FLOW_TITLE, FLOW_CONTENT
-      )
+      IS_DELETE, FLOW_TITLE, FLOW_CONTENT, 
+      LONGITUDE, LATITUDE)
     values (#{shopId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{introImages,jdbcType=VARCHAR}, 
       #{shopAddress,jdbcType=VARCHAR}, #{contactWay,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}, 
       #{shopIntro,jdbcType=VARCHAR}, #{openTime,jdbcType=VARCHAR}, #{heightTime,jdbcType=VARCHAR}, 
@@ -60,8 +62,8 @@
       #{scanTimes,jdbcType=DECIMAL}, #{adminUserId,jdbcType=VARCHAR}, #{simpleIntro,jdbcType=VARCHAR}, 
       #{backupCoumn2,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, #{isHot,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updataTime,jdbcType=TIMESTAMP}, #{warmPrompt,jdbcType=VARCHAR}, 
-      #{isDelete,jdbcType=VARCHAR}, #{flowTitle,jdbcType=VARCHAR}, #{flowContent,jdbcType=VARCHAR}
-      )
+      #{isDelete,jdbcType=VARCHAR}, #{flowTitle,jdbcType=VARCHAR}, #{flowContent,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.takeTicket.domain.Shop" >
     insert into SHOP
@@ -138,6 +140,12 @@
       <if test="flowContent != null" >
         FLOW_CONTENT,
       </if>
+      <if test="longitude != null" >
+        LONGITUDE,
+      </if>
+      <if test="latitude != null" >
+        LATITUDE,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="shopId != null" >
@@ -211,6 +219,12 @@
       </if>
       <if test="flowContent != null" >
         #{flowContent,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -286,6 +300,12 @@
       <if test="flowContent != null" >
         FLOW_CONTENT = #{flowContent,jdbcType=VARCHAR},
       </if>
+      <if test="longitude != null" >
+        LONGITUDE = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        LATITUDE = #{latitude,jdbcType=VARCHAR},
+      </if>
     </set>
     where SHOP_ID = #{shopId,jdbcType=VARCHAR}
   </update>
@@ -313,7 +333,9 @@
       WARM_PROMPT = #{warmPrompt,jdbcType=VARCHAR},
       IS_DELETE = #{isDelete,jdbcType=VARCHAR},
       FLOW_TITLE = #{flowTitle,jdbcType=VARCHAR},
-      FLOW_CONTENT = #{flowContent,jdbcType=VARCHAR}
+      FLOW_CONTENT = #{flowContent,jdbcType=VARCHAR},
+      LONGITUDE = #{longitude,jdbcType=VARCHAR},
+      LATITUDE = #{latitude,jdbcType=VARCHAR}
     where SHOP_ID = #{shopId,jdbcType=VARCHAR}
   </update>
 </mapper>
