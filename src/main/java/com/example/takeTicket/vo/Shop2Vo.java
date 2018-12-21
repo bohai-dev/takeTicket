@@ -57,6 +57,12 @@ public class Shop2Vo {
     private String longitude;
 
     private String latitude;
+
+    private String topImagePath;
+
+    private String shareTitle;
+
+    private String shareImagePath;
     
     private List<SpecialDishes> specialDishes;
 
@@ -275,6 +281,32 @@ public class Shop2Vo {
     public void setLatitude(String latitude) {
         this.latitude = latitude == null ? null : latitude.trim();
     }
+
+	public String getTopImagePath() {
+		return topImagePath;
+	}
+
+	public void setTopImagePath(String topImagePath) {
+		this.topImagePath = topImagePath;
+	}
+
+	public String getShareTitle() {
+		return shareTitle;
+	}
+
+	public void setShareTitle(String shareTitle) {
+		this.shareTitle = shareTitle;
+	}
+
+	public String getShareImagePath() {
+		return shareImagePath;
+	}
+
+	public void setShareImagePath(String shareImagePath) {
+		this.shareImagePath = shareImagePath;
+	}
+    
+    
 	 
 
 }
