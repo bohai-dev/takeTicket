@@ -38,8 +38,9 @@ public class UserPointController {
 	//据客户ID和商铺ID查该商铺的积分
     @RequestMapping(value="/getPoint", method = RequestMethod.GET)
     public ResponseBody<CustPointRecord> getPoint(@RequestParam("custId") String custId,@RequestParam("shopId") String shopId) throws CouponException {
-
+        
 		Logger logger = LoggerFactory.getLogger(CustUserController.class);
+		logger.info("custId:" + custId);
 		ResponseBody<CustPointRecord> responseBody = new ResponseBody<CustPointRecord>();
 		responseBody.setData(pointService.getPoint(custId, shopId));
 		

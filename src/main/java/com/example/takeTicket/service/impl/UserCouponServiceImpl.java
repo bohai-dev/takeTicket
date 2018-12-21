@@ -1,6 +1,7 @@
 package com.example.takeTicket.service.impl;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,6 +87,7 @@ public class UserCouponServiceImpl implements UserCouponService {
 		List<UserCouponAllInfoVo> listCustCouponRecord = new ArrayList<>();
 		
 		listCustCouponRecord = custCouponMapper.selectCouponListByCust(custId,new BigDecimal(couponStatus));
+
 		
 		return listCustCouponRecord;
 	}

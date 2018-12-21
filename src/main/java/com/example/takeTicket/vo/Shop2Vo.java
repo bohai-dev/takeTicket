@@ -1,9 +1,12 @@
-package com.example.takeTicket.domain;
+package com.example.takeTicket.vo;
 
 import java.util.Date;
+import java.util.List;
 
-public class Shop {
-    private String shopId;
+import com.example.takeTicket.domain.SpecialDishes;
+
+public class Shop2Vo {
+	private String shopId;
 
     private String shopName;
 
@@ -54,14 +57,18 @@ public class Shop {
     private String longitude;
 
     private String latitude;
+    
+    private List<SpecialDishes> specialDishes;
 
-    private String topImagePath;
+    public List<SpecialDishes> getSpecialDishes() {
+		return specialDishes;
+	}
 
-    private String shareTitle;
+	public void setSpecialDishes(List<SpecialDishes> specialDishes) {
+		this.specialDishes = specialDishes;
+	}
 
-    private String shareImagePath;
-
-    public String getShopId() {
+	public String getShopId() {
         return shopId;
     }
 
@@ -268,28 +275,6 @@ public class Shop {
     public void setLatitude(String latitude) {
         this.latitude = latitude == null ? null : latitude.trim();
     }
+	 
 
-    public String getTopImagePath() {
-        return topImagePath;
-    }
-
-    public void setTopImagePath(String topImagePath) {
-        this.topImagePath = topImagePath == null ? null : topImagePath.trim();
-    }
-
-    public String getShareTitle() {
-        return shareTitle;
-    }
-
-    public void setShareTitle(String shareTitle) {
-        this.shareTitle = shareTitle == null ? null : shareTitle.trim();
-    }
-
-    public String getShareImagePath() {
-        return shareImagePath;
-    }
-
-    public void setShareImagePath(String shareImagePath) {
-        this.shareImagePath = shareImagePath == null ? null : shareImagePath.trim();
-    }
 }
