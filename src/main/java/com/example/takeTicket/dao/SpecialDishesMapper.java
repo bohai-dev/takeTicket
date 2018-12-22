@@ -20,6 +20,6 @@ public interface SpecialDishesMapper {
 
     int updateByPrimaryKey(SpecialDishes record);
     
-    @Select("select * from SPECIAL_DISHES where SHOP_ID = #{shopId}")
+    @Select("select * from SPECIAL_DISHES where SHOP_ID = #{shopId} and IS_DELETE = '0'")
     List<SpecialDishes> getSpecialDishes(@Param("shopId")String shopId);
 }

@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@Configuration
 //@EnableScheduling
-//@ComponentScan("com.apple.appleuser.task")
+//@ComponentScan("com.example.takeTicket.task")
 public class SchedulingConfig {
 
 }
