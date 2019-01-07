@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.takeTicket.domain.Shop;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.CustShareService;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
+import com.example.takeTicket.vo.Shop3Vo;
 
 
 
@@ -43,9 +43,9 @@ public class CustShareController {
     
  // 客户分享记录列表
     @RequestMapping(value="/getCustShareList", method = RequestMethod.GET)
-    public ResponseBody<List<Shop>> getCustShareList(@RequestParam("custId") String custId) throws CouponException {
+    public ResponseBody<List<Shop3Vo>> getCustShareList(@RequestParam("custId") String custId) throws CouponException {
     	Logger logger = LoggerFactory.getLogger(CustUserController.class);
-    	ResponseBody<List<Shop>> ResponseBodyret = new ResponseBody<>();
+    	ResponseBody<List<Shop3Vo>> ResponseBodyret = new ResponseBody<>();
     	ResponseBodyret.setData(custShareService.getCustShareList(custId));
     	
 		return ResponseBodyret;

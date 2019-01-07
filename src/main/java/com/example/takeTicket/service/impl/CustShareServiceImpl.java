@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.takeTicket.dao.CustShareInfoMapper;
 import com.example.takeTicket.domain.CustShareInfo;
-import com.example.takeTicket.domain.Shop;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.CustShareService;
+import com.example.takeTicket.vo.Shop3Vo;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -39,8 +39,8 @@ public class CustShareServiceImpl  implements CustShareService {
 	}
 
 	@Override
-	public List<Shop> getCustShareList(String custId) throws CouponException {
-		List<Shop> listShop = new ArrayList<>();
+	public List<Shop3Vo> getCustShareList(String custId) throws CouponException {
+		List<Shop3Vo> listShop = new ArrayList<>();
 		listShop = custShareInfoMapper.getCustShareList(new BigDecimal(custId));
 		
 		

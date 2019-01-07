@@ -2,8 +2,8 @@ package com.example.takeTicket.service;
 
 import java.util.List;
 
-import com.example.takeTicket.domain.Shop;
 import com.example.takeTicket.exception.CouponException;
+import com.example.takeTicket.vo.Shop3Vo;
 
 /**
  * Created by cxy on 2018/11/19
@@ -25,5 +25,5 @@ public interface CustShareService {
      * @return
      * @throws CouponException
      */
-    List<Shop> getCustShareList(String custId) throws CouponException;
+    List<Shop3Vo> getCustShareList(String custId) throws CouponException;
 }
