@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.Shop;
+import com.example.takeTicket.vo.Shop2Vo;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -25,7 +26,7 @@ public interface ShopService {
      * @param shop
      * @return
      */
-    Shop getShopInfo(String  shopId);
+    Shop2Vo getShopInfo(String  shopId);
     
     /**
      * 按照店铺名查找优惠

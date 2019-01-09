@@ -25,6 +25,7 @@ import com.example.takeTicket.service.ShopService;
 import com.example.takeTicket.util.HttpUtil;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
+import com.example.takeTicket.vo.Shop2Vo;
 
 
 
@@ -45,7 +46,7 @@ public class ShopController {
     public JSONObject selectByConditions(@RequestParam(value = "classId",required = false) String classId,@RequestParam(value = "isHot",required = false) String isHot) throws CouponException {
 		LOGGER.info("classId="+classId+",isHot="+isHot);
 
-		String httpUrl = "http://139.196.73.183:8088/export/shop/selectbyconditions";
+		String httpUrl = "http://127.0.0.1:8088/export/shop/selectbyconditions";
 		Map<String,String> params=new HashMap<>();
 		if (StringUtils.isNotBlank(classId)){
 			params.put("classId",classId);
@@ -88,9 +89,9 @@ public class ShopController {
     
     //按照店铺ID
     @RequestMapping(value="/getShopInfo", method = RequestMethod.GET)
-    public ResponseBody<Shop> getShopInfo(@RequestParam("shopId") String shopId) throws CouponException {
+    public ResponseBody<Shop2Vo> getShopInfo(@RequestParam("shopId") String shopId) throws CouponException {
 
-    	ResponseBody<Shop> responseBody = new ResponseBody<>();
+    	ResponseBody<Shop2Vo> responseBody = new ResponseBody<>();
     	responseBody.setData(shopService.getShopInfo(shopId));
     	
     	return responseBody;

@@ -26,6 +26,7 @@ public class UserCouponAllInfoVo {
 
     private String bakStr;
 
+    @JsonFormat(pattern="yyyy年MM月dd日")
     private Date updateTime;
     
     //COUPON 表

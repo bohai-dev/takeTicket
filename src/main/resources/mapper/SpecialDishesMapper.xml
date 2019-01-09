@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.takeTicket.dao.SpecialDishesMapper" >
+  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.SpecialDishes" >
+    <id column="DISH_ID" property="dishId" jdbcType="VARCHAR" />
+    <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" />
+    <result column="IMAGE_PATH" property="imagePath" jdbcType="VARCHAR" />
+    <result column="DISH_PRICE" property="dishPrice" jdbcType="VARCHAR" />
+    <result column="DISH_NAME" property="dishName" jdbcType="VARCHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="VARCHAR" />
+    <result column="BACK_COLUMN1" property="backColumn1" jdbcType="VARCHAR" />
+    <result column="BACK_COLUMN2" property="backColumn2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DISH_ID, SHOP_ID, IMAGE_PATH, DISH_PRICE, DISH_NAME, IS_DELETE, BACK_COLUMN1, BACK_COLUMN2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SPECIAL_DISHES
+    where DISH_ID = #{dishId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SPECIAL_DISHES
+    where DISH_ID = #{dishId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.takeTicket.domain.SpecialDishes" >
+    insert into SPECIAL_DISHES (DISH_ID, SHOP_ID, IMAGE_PATH, 
+      DISH_PRICE, DISH_NAME, IS_DELETE, 
+      BACK_COLUMN1, BACK_COLUMN2)
+    values (#{dishId,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
+      #{dishPrice,jdbcType=VARCHAR}, #{dishName,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, 
+      #{backColumn1,jdbcType=VARCHAR}, #{backColumn2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.SpecialDishes" >
+    insert into SPECIAL_DISHES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dishId != null" >
+        DISH_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="imagePath != null" >
+        IMAGE_PATH,
+      </if>
+      <if test="dishPrice != null" >
+        DISH_PRICE,
+      </if>
+      <if test="dishName != null" >
+        DISH_NAME,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="backColumn1 != null" >
+        BACK_COLUMN1,
+      </if>
+      <if test="backColumn2 != null" >
+        BACK_COLUMN2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dishId != null" >
+        #{dishId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="dishPrice != null" >
+        #{dishPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="dishName != null" >
+        #{dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="backColumn1 != null" >
+        #{backColumn1,jdbcType=VARCHAR},
+      </if>
+      <if test="backColumn2 != null" >
+        #{backColumn2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeTicket.domain.SpecialDishes" >
+    update SPECIAL_DISHES
+    <set >
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        IMAGE_PATH = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="dishPrice != null" >
+        DISH_PRICE = #{dishPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="dishName != null" >
+        DISH_NAME = #{dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="backColumn1 != null" >
+        BACK_COLUMN1 = #{backColumn1,jdbcType=VARCHAR},
+      </if>
+      <if test="backColumn2 != null" >
+        BACK_COLUMN2 = #{backColumn2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DISH_ID = #{dishId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.takeTicket.domain.SpecialDishes" >
+    update SPECIAL_DISHES
+    set SHOP_ID = #{shopId,jdbcType=VARCHAR},
+      IMAGE_PATH = #{imagePath,jdbcType=VARCHAR},
+      DISH_PRICE = #{dishPrice,jdbcType=VARCHAR},
+      DISH_NAME = #{dishName,jdbcType=VARCHAR},
+      IS_DELETE = #{isDelete,jdbcType=VARCHAR},
+      BACK_COLUMN1 = #{backColumn1,jdbcType=VARCHAR},
+      BACK_COLUMN2 = #{backColumn2,jdbcType=VARCHAR}
+    where DISH_ID = #{dishId,jdbcType=VARCHAR}
+  </update>
+</mapper>

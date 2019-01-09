@@ -5,14 +5,18 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.takeTicket.dao.CouponMapper;
 import com.example.takeTicket.dao.ShopMapper;
+import com.example.takeTicket.dao.SpecialDishesMapper;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.Shop;
+import com.example.takeTicket.domain.SpecialDishes;
 import com.example.takeTicket.service.ShopService;
+import com.example.takeTicket.vo.Shop2Vo;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -25,6 +29,9 @@ public class ShopServiceImpl  implements ShopService {
 
     @Autowired
     CouponMapper couponMapper;
+    
+    @Autowired
+    SpecialDishesMapper specialDishesMapper;
 
 	@Override
 	public List<Shop> likeShopStr(String shopStr) {
@@ -50,10 +57,17 @@ public class ShopServiceImpl  implements ShopService {
 	}
 
 	@Override
-	public Shop getShopInfo(String shopId) {
+	public Shop2Vo getShopInfo(String shopId) {
 		Shop shopRet = new Shop();
 		shopRet = shopMapper.selectByPrimaryKey(shopId);
-		return shopRet;
+		
+		Shop2Vo shop2Vo = new Shop2Vo();
+		BeanUtils.copyProperties(shopRet, shop2Vo);
+		
+		List<SpecialDishes> listSpecialDishes = specialDishesMapper.getSpecialDishes(shopId);
+		
+		shop2Vo.setSpecialDishes(listSpecialDishes);
+		return shop2Vo;
 	}
 
 
