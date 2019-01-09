@@ -1,4 +1,5 @@
 package com.example.takeTicket.util;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,6 +14,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 import java.net.URI;
@@ -67,7 +69,7 @@ public class HttpUtil {
         // httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"); // 设置请求头消息User-Agent
         CloseableHttpResponse response=httpClient.execute(httpGet); // 执行http get请求
         int statusCode=response.getStatusLine().getStatusCode();
-        if (statusCode!=200){
+        if (statusCode!=HttpStatus.OK.value()){
             throw new Exception("无法连接该地址");
         }
         HttpEntity entity=response.getEntity(); // 获取返回实体
@@ -91,7 +93,7 @@ public class HttpUtil {
 
          CloseableHttpResponse response = client.execute(httpPost);
          int statusCode=response.getStatusLine().getStatusCode();
-         if (statusCode!=200){
+         if (statusCode!=HttpStatus.OK.value()){
              throw new Exception("无法连接该地址");
          }
          HttpEntity resEntity=response.getEntity(); // 获取返回实体
@@ -125,7 +127,7 @@ public class HttpUtil {
 
         CloseableHttpResponse response = client.execute(httpPost);
         int statusCode=response.getStatusLine().getStatusCode();
-        if (statusCode!=200){
+        if (statusCode!=HttpStatus.OK.value()){
             throw new Exception("无法连接该地址"+statusCode);
          }
         HttpEntity resEntity=response.getEntity(); // 获取返回实体
@@ -163,7 +165,7 @@ public class HttpUtil {
 
         CloseableHttpResponse response = client.execute(httpPost);
         int statusCode=response.getStatusLine().getStatusCode();
-        if (statusCode!=200){
+        if (statusCode!=HttpStatus.OK.value()){
             throw new Exception("连接地址失败"+statusCode);
          }
         HttpEntity resEntity=response.getEntity(); // 获取返回实体
@@ -176,13 +178,15 @@ public class HttpUtil {
 
     }
 
-    public static String  postText(String url,String data)throws Exception{
+    public static String  postJson(String url, JSONObject paramsObject)throws Exception{
+
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         HttpPost httpPost = new HttpPost(url);
 
 
-        StringEntity postEntity = new StringEntity(data, "UTF-8");
+
+        StringEntity postEntity = new StringEntity(paramsObject.toJSONString(), "UTF-8");
         httpPost.addHeader("Content-Type", "text/xml");
         httpPost.setEntity(postEntity);
 

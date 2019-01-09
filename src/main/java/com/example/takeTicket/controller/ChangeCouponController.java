@@ -29,10 +29,11 @@ public class ChangeCouponController {
     
     //客户兑换优惠券
     @RequestMapping(value="/custChangeCoupon", method = RequestMethod.GET)
-    public ResponseBody<CustCouponRecord> custChangeCoupon(@RequestParam("custId") String custId,@RequestParam("shopId") String shopId,@RequestParam("couponId") String couponId) throws CouponException {
+    public ResponseBody<CustCouponRecord> custChangeCoupon(@RequestParam("custId") String custId,@RequestParam("shopId") String shopId,
+														   @RequestParam("couponId") String couponId,@RequestParam("formId") String formId) throws CouponException {
 
     	ResponseBody<CustCouponRecord> responseBody = new ResponseBody<>();
-    	responseBody.setData(changeCouponService.custChangeCoupon(custId,shopId,couponId));
+    	responseBody.setData(changeCouponService.custChangeCoupon(custId,shopId,couponId,formId));
     	
     	return responseBody;
     	
