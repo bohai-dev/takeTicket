@@ -33,7 +33,9 @@ public class UserPointController {
 
 	@Autowired
 	PointService pointService;
-	
+
+	/** logger */
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserPointController.class);	
 
 	//据客户ID和商铺ID查该商铺的积分
     @RequestMapping(value="/getPoint", method = RequestMethod.GET)
