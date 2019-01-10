@@ -55,6 +55,7 @@ public class UserPointController {
 
 		Logger logger = LoggerFactory.getLogger(CustUserController.class);
 		ResponseHeader responseHeader = new ResponseHeader();
+		System.out.println("custId9999=" + custId);
 		pointService.addPoint(custId, shopId,pointNum);
 		
         
@@ -83,7 +84,7 @@ public class UserPointController {
 		getPointRecord.setCustId(Long.valueOf(getPointRecordVo.getCustId()));
 		getPointRecord.setShopId(getPointRecordVo.getShopId());
 		getPointRecord.setChildId(Long.valueOf(getPointRecordVo.getChildId()));
-		getPointRecord.setRecordFlg(Short.valueOf(getPointRecordVo.getRecordFlg()));
+		getPointRecord.setRecordFlg(Long.valueOf(getPointRecordVo.getRecordFlg()));
 		getPointRecord.setCreateTime(new Date());
 		getPointRecord.setBakStr(getPointRecordVo.getBakStr());
 		
@@ -106,7 +107,7 @@ public class UserPointController {
 		getPointRecord.setCustId(Long.valueOf(custId));
 		getPointRecord.setShopId(shopId);
 		getPointRecord.setChildId(Long.valueOf(childId));
-		Short i = 0;
+		Long i = (long) 0;
 		getPointRecord.setRecordFlg(i);
 		getPointRecord.setCreateTime(new Date());
 		getPointRecord.setBakStr("");
@@ -129,7 +130,7 @@ public class UserPointController {
 		getPointRecord.setCustId(Long.valueOf(custId));
 		getPointRecord.setShopId(shopId);
 		getPointRecord.setChildId(Long.valueOf(childId));
-		Short i = 0;
+		Long i = (long) 0;
 		getPointRecord.setRecordFlg(i);
 		getPointRecord.setCreateTime(new Date());
 		getPointRecord.setBakStr("");

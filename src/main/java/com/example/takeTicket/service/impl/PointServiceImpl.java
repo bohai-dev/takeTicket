@@ -47,7 +47,7 @@ public class PointServiceImpl  implements PointService {
 			custPointRecordRet.setCustId(Long.valueOf(custId));
 			custPointRecordRet.setPointNumber(pointNum);
 			custPointRecordRet.setShopId(shopId);
-			Short i = 0;
+			Long i = (long) 0;
 			custPointRecordRet.setPointState(i);
 			custPointRecordMapper.insertSelective(custPointRecordRet);
 		} else {
@@ -113,7 +113,7 @@ public class PointServiceImpl  implements PointService {
 				custPointRecord.setPointNumber(new BigDecimal(1));
 				custPointRecord.setPointSub(new BigDecimal(0));
 				custPointRecord.setCreateTime(new Date());
-				Short i = 0;
+				Long i = (long) 0;
 				custPointRecord.setPointState(i);
 				custPointRecord.setBakStr("");
 				

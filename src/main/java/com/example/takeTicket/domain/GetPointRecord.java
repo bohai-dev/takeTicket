@@ -9,7 +9,7 @@ public class GetPointRecord {
 
     private Long childId;
 
-    private Short recordFlg;
+    private Long recordFlg;
 
     private Date createTime;
 
@@ -39,11 +39,11 @@ public class GetPointRecord {
         this.childId = childId;
     }
 
-    public Short getRecordFlg() {
+    public Long getRecordFlg() {
         return recordFlg;
     }
 
-    public void setRecordFlg(Short recordFlg) {
+    public void setRecordFlg(Long recordFlg) {
         this.recordFlg = recordFlg;
     }
 
