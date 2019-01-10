@@ -4,6 +4,7 @@ package com.example.takeTicket.service.impl;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.example.takeTicket.service.TemplateMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,8 +49,11 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
     @Autowired
     custPointRecordMapper custPointRecordMapper;
 
+    @Autowired
+	TemplateMessageService templateMessageService;
+
 	@Override
-	public CustCouponRecord custChangeCoupon(String custId, String shopId, String couponId) throws CouponException {
+	public CustCouponRecord custChangeCoupon(String custId, String shopId, String couponId,String formId) throws CouponException {
 		
 		
 		CustCouponRecord custCouponRecordRet = new CustCouponRecord();
@@ -108,7 +112,8 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		//用户积分扣除
 		custPointRecordMapper.subPoint(new BigDecimal(custId), shopId, spendPoint);
 		
-		
+		//发送模板消息
+		templateMessageService.sendExchSuccessMsg(custId,shopId,couponId,formId);
 		
 		return custCouponRecordRet;
 	}

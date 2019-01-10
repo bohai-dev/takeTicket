@@ -10,10 +10,10 @@ public interface ChangeCouponService {
 
 	/**
      * 客户兑换优惠券
-     * @param shop
+     * @param shopId
      * @return
      */
-	CustCouponRecord custChangeCoupon(String custId,String shopId,String couponId) throws CouponException;
+	CustCouponRecord custChangeCoupon(String custId,String shopId,String couponId,String formId) throws CouponException;
 
 
 }
