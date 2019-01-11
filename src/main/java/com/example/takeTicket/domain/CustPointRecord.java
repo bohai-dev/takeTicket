@@ -12,7 +12,7 @@ public class CustPointRecord {
 
     private BigDecimal pointSub;
 
-    private Short pointState;
+    private Long pointState;
 
     private Date createTime;
 
@@ -52,11 +52,11 @@ public class CustPointRecord {
         this.pointSub = pointSub;
     }
 
-    public Short getPointState() {
+    public Long getPointState() {
         return pointState;
     }
 
-    public void setPointState(Short pointState) {
+    public void setPointState(Long pointState) {
         this.pointState = pointState;
     }
 
