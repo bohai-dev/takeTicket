@@ -38,10 +38,11 @@ public class TemplateMessageServiceImpl implements TemplateMessageService {
 
     @Override
     public void sendExchSuccessMsg(String userId,String shopId,String couponId,String formId){
-        //获取access_token
+        //要跳转的小程序页面路径
         String page="pages/changeHistory/changeHistory";
 
         try {
+            //获取access_token
             String accessToken=HttpUtil.get(Constants.SERVER_URL+"/access_token");
             String openId=userMapper.selectByPrimaryKey(userId).getOpenId();
             Shop shop=shopMapper.selectByPrimaryKey(shopId);
