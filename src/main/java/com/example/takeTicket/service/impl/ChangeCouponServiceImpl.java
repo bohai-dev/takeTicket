@@ -25,6 +25,7 @@ import com.example.takeTicket.exception.CouponErrorConstant;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.ChangeCouponService;
 import com.example.takeTicket.util.QrCode;
+import org.springframework.util.StringUtils;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -111,9 +112,12 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		
 		//用户积分扣除
 		custPointRecordMapper.subPoint(new BigDecimal(custId), shopId, spendPoint);
-		
-		//发送模板消息
-		templateMessageService.sendExchSuccessMsg(custId,shopId,couponId,formId);
+
+		if (!StringUtils.isEmpty(formId)){
+			//发送模板消息
+			templateMessageService.sendExchSuccessMsg(custId,shopId,couponId,formId);
+		}
+
 		
 		return custCouponRecordRet;
 	}
