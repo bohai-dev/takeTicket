@@ -61,6 +61,10 @@ public class Shop {
 
     private String shareImagePath;
 
+    private String shopArea;
+
+    private String averageConsume;
+
     public String getShopId() {
         return shopId;
     }
@@ -291,5 +295,21 @@ public class Shop {
 
     public void setShareImagePath(String shareImagePath) {
         this.shareImagePath = shareImagePath == null ? null : shareImagePath.trim();
+    }
+
+    public String getShopArea() {
+        return shopArea;
+    }
+
+    public void setShopArea(String shopArea) {
+        this.shopArea = shopArea == null ? null : shopArea.trim();
+    }
+
+    public String getAverageConsume() {
+        return averageConsume;
+    }
+
+    public void setAverageConsume(String averageConsume) {
+        this.averageConsume = averageConsume == null ? null : averageConsume.trim();
     }
 }

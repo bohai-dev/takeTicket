@@ -8,11 +8,11 @@
     <result column="DISH_PRICE" property="dishPrice" jdbcType="VARCHAR" />
     <result column="DISH_NAME" property="dishName" jdbcType="VARCHAR" />
     <result column="IS_DELETE" property="isDelete" jdbcType="VARCHAR" />
-    <result column="BACK_COLUMN1" property="backColumn1" jdbcType="VARCHAR" />
+    <result column="DISH_UNIT" property="dishUnit" jdbcType="VARCHAR" />
     <result column="BACK_COLUMN2" property="backColumn2" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    DISH_ID, SHOP_ID, IMAGE_PATH, DISH_PRICE, DISH_NAME, IS_DELETE, BACK_COLUMN1, BACK_COLUMN2
+    DISH_ID, SHOP_ID, IMAGE_PATH, DISH_PRICE, DISH_NAME, IS_DELETE, DISH_UNIT, BACK_COLUMN2
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -27,10 +27,10 @@
   <insert id="insert" parameterType="com.example.takeTicket.domain.SpecialDishes" >
     insert into SPECIAL_DISHES (DISH_ID, SHOP_ID, IMAGE_PATH, 
       DISH_PRICE, DISH_NAME, IS_DELETE, 
-      BACK_COLUMN1, BACK_COLUMN2)
+      DISH_UNIT, BACK_COLUMN2)
     values (#{dishId,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
       #{dishPrice,jdbcType=VARCHAR}, #{dishName,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, 
-      #{backColumn1,jdbcType=VARCHAR}, #{backColumn2,jdbcType=VARCHAR})
+      #{dishUnit,jdbcType=VARCHAR}, #{backColumn2,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.takeTicket.domain.SpecialDishes" >
     insert into SPECIAL_DISHES
@@ -53,8 +53,8 @@
       <if test="isDelete != null" >
         IS_DELETE,
       </if>
-      <if test="backColumn1 != null" >
-        BACK_COLUMN1,
+      <if test="dishUnit != null" >
+        DISH_UNIT,
       </if>
       <if test="backColumn2 != null" >
         BACK_COLUMN2,
@@ -79,8 +79,8 @@
       <if test="isDelete != null" >
         #{isDelete,jdbcType=VARCHAR},
       </if>
-      <if test="backColumn1 != null" >
-        #{backColumn1,jdbcType=VARCHAR},
+      <if test="dishUnit != null" >
+        #{dishUnit,jdbcType=VARCHAR},
       </if>
       <if test="backColumn2 != null" >
         #{backColumn2,jdbcType=VARCHAR},
@@ -105,8 +105,8 @@
       <if test="isDelete != null" >
         IS_DELETE = #{isDelete,jdbcType=VARCHAR},
       </if>
-      <if test="backColumn1 != null" >
-        BACK_COLUMN1 = #{backColumn1,jdbcType=VARCHAR},
+      <if test="dishUnit != null" >
+        DISH_UNIT = #{dishUnit,jdbcType=VARCHAR},
       </if>
       <if test="backColumn2 != null" >
         BACK_COLUMN2 = #{backColumn2,jdbcType=VARCHAR},
@@ -121,7 +121,7 @@
       DISH_PRICE = #{dishPrice,jdbcType=VARCHAR},
       DISH_NAME = #{dishName,jdbcType=VARCHAR},
       IS_DELETE = #{isDelete,jdbcType=VARCHAR},
-      BACK_COLUMN1 = #{backColumn1,jdbcType=VARCHAR},
+      DISH_UNIT = #{dishUnit,jdbcType=VARCHAR},
       BACK_COLUMN2 = #{backColumn2,jdbcType=VARCHAR}
     where DISH_ID = #{dishId,jdbcType=VARCHAR}
   </update>

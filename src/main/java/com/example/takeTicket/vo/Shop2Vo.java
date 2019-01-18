@@ -64,7 +64,28 @@ public class Shop2Vo {
 
     private String shareImagePath;
     
-    private List<SpecialDishes> specialDishes;
+    private String shopArea;
+
+    private String averageConsume;
+    
+    
+    public String getShopArea() {
+		return shopArea;
+	}
+
+	public void setShopArea(String shopArea) {
+		this.shopArea = shopArea;
+	}
+
+	public String getAverageConsume() {
+		return averageConsume;
+	}
+
+	public void setAverageConsume(String averageConsume) {
+		this.averageConsume = averageConsume;
+	}
+
+	private List<SpecialDishes> specialDishes;
 
     public List<SpecialDishes> getSpecialDishes() {
 		return specialDishes;

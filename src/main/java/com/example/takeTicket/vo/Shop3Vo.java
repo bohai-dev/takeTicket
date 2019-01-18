@@ -65,6 +65,27 @@ public class Shop3Vo {
     private String shareImagePath;
 
 	private Long pointAvail;
+	
+	private String shopArea;
+
+    private String averageConsume;
+    
+
+	public String getShopArea() {
+		return shopArea;
+	}
+
+	public void setShopArea(String shopArea) {
+		this.shopArea = shopArea;
+	}
+
+	public String getAverageConsume() {
+		return averageConsume;
+	}
+
+	public void setAverageConsume(String averageConsume) {
+		this.averageConsume = averageConsume;
+	}
 
 	public String getShopId() {
 		return shopId;
