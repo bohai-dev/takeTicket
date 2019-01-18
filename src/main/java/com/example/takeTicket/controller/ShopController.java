@@ -122,6 +122,18 @@ public class ShopController {
     	
     	
     }
+    
+    //根据地区查商铺
+    @RequestMapping(value="/getShopConditions", method = RequestMethod.GET)
+    public ResponseBody<List<Shop>> getShopConditions(@RequestParam("shopArea") String shopArea,@RequestParam("classId") String classId,@RequestParam("couponType") String couponType) throws CouponException {
+
+    	ResponseBody<List<Shop>> responseBody = new ResponseBody<>();
+    	responseBody.setData(shopService.getShopConditions(shopArea,classId,couponType));
+    	
+    	return responseBody;
+    	
+    	
+    }
 
 
 }

@@ -31,4 +31,10 @@ public interface ShopMapper {
     
     @Update("update SHOP set SCAN_TIMES = SCAN_TIMES + #{scanNum} where SHOP_ID = #{shopId}")
     int addScanTime(@Param("shopId")String shopId,@Param("scanNum")BigDecimal scanNum);
+    
+    @Select("select * from SHOP where SHOP_AREA = #{shopArea}")
+    List<Shop> getAreaShop(@Param("shopArea")String shopArea);
+    
+    @Select("select distinct A.* from Shop A,COUPON B where A.SHOP_ID = B.SHOP_ID and  (1 = #{flg1} or A.SHOP_AREA = #{shopArea}) and (2 = #{flg2} or A.class_id = #{classId}) and (3 = #{flg3} or COUPON_TYPE = #{couponType})")
+    List<Shop> getShopConditions(@Param("shopArea")String shopArea,@Param("classId")String classId,@Param("couponType")String couponType,@Param("flg1")BigDecimal flg1,@Param("flg2")BigDecimal flg2,@Param("flg3")BigDecimal flg3);
 }

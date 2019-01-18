@@ -42,4 +42,19 @@ public interface ShopService {
      * @return
      */
     void addScanTime(String shopId,BigDecimal scanNum);
+    
+    /**
+     * 根据地域查询店铺
+     * @param shop
+     * @return
+     */
+    List<Shop> getAreaShop(String  shopArea);
+    
+    /**
+     * 根据条件查询店铺v1.0.4
+     * @param shop
+     * @return
+     */
+    List<Shop> getShopConditions(String  shopArea,String classId,String couponType);
+    
 }

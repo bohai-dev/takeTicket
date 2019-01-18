@@ -70,6 +70,35 @@ public class ShopServiceImpl  implements ShopService {
 		return shop2Vo;
 	}
 
+	@Override
+	public List<Shop> getAreaShop(String shopArea) {
+		List<Shop> listShop = new ArrayList<Shop>();
+		listShop = shopMapper.getAreaShop(shopArea);
+		return listShop;
+	}
+
+	@Override
+	public List<Shop> getShopConditions(String shopArea, String classId, String couponType) {
+		List<Shop> listShop = new ArrayList<Shop>();
+		BigDecimal flg1 = new BigDecimal(0);
+		BigDecimal flg2 = new BigDecimal(0);
+		BigDecimal flg3 = new BigDecimal(0);
+		if("".equals(shopArea) || null == shopArea){
+			flg1 = new BigDecimal(1);
+		} 
+		
+		if("".equals(classId) || null == classId){
+			flg2 = new BigDecimal(2);
+		} 
+		
+		if("".equals(couponType) || null == couponType){
+			flg3 = new BigDecimal(3);
+		} 
+		
+		listShop = shopMapper.getShopConditions(shopArea,classId,couponType,flg1,flg2,flg3);
+		return listShop;
+	}
+
 
     
 }
