@@ -33,7 +33,7 @@ public class Shop {
 
     private String simpleIntro;
 
-    private String backupCoumn2;
+    private String articleUrl;
 
     private String classId;
 
@@ -185,12 +185,12 @@ public class Shop {
         this.simpleIntro = simpleIntro == null ? null : simpleIntro.trim();
     }
 
-    public String getBackupCoumn2() {
-        return backupCoumn2;
+    public String getArticleUrl() {
+        return articleUrl;
     }
 
-    public void setBackupCoumn2(String backupCoumn2) {
-        this.backupCoumn2 = backupCoumn2 == null ? null : backupCoumn2.trim();
+    public void setArticleUrl(String articleUrl) {
+        this.articleUrl = articleUrl == null ? null : articleUrl.trim();
     }
 
     public String getClassId() {

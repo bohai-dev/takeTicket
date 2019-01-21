@@ -36,7 +36,7 @@ public class Shop2Vo {
 
     private String simpleIntro;
 
-    private String backupCoumn2;
+    private String articleUrl;
 
     private String classId;
 
@@ -215,15 +215,17 @@ public class Shop2Vo {
         this.simpleIntro = simpleIntro == null ? null : simpleIntro.trim();
     }
 
-    public String getBackupCoumn2() {
-        return backupCoumn2;
-    }
+    
 
-    public void setBackupCoumn2(String backupCoumn2) {
-        this.backupCoumn2 = backupCoumn2 == null ? null : backupCoumn2.trim();
-    }
+    public String getArticleUrl() {
+		return articleUrl;
+	}
 
-    public String getClassId() {
+	public void setArticleUrl(String articleUrl) {
+		this.articleUrl = articleUrl;
+	}
+
+	public String getClassId() {
         return classId;
     }
 

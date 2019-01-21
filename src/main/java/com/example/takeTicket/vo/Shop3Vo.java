@@ -36,7 +36,7 @@ public class Shop3Vo {
 
     private String simpleIntro;
 
-    private String backupCoumn2;
+    private String articleUrl;
 
     private String classId;
 
@@ -207,12 +207,14 @@ public class Shop3Vo {
 		this.simpleIntro = simpleIntro;
 	}
 
-	public String getBackupCoumn2() {
-		return backupCoumn2;
+    
+
+	public String getArticleUrl() {
+		return articleUrl;
 	}
 
-	public void setBackupCoumn2(String backupCoumn2) {
-		this.backupCoumn2 = backupCoumn2;
+	public void setArticleUrl(String articleUrl) {
+		this.articleUrl = articleUrl;
 	}
 
 	public String getClassId() {
