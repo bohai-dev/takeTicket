@@ -41,7 +41,7 @@ public class CustShareController {
     	
     }
     
- // 客户分享记录列表
+    // 客户分享记录列表
     @RequestMapping(value="/getCustShareList", method = RequestMethod.GET)
     public ResponseBody<List<Shop3Vo>> getCustShareList(@RequestParam("custId") String custId) throws CouponException {
     	Logger logger = LoggerFactory.getLogger(CustUserController.class);

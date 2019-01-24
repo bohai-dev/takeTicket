@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.takeTicket.domain.SpecialDishes;
 
-public class Shop3Vo {
+public class Shop4Vo {
 	private String shopId;
 
     private String shopName;
@@ -64,9 +64,7 @@ public class Shop3Vo {
 
     private String shareImagePath;
 
-	private Long pointAvail;
-	
-	private String shopArea;
+    private String shopArea;
 
     private String averageConsume;
     
@@ -86,22 +84,6 @@ public class Shop3Vo {
 
 	public void setOrderValue(Long orderValue) {
 		this.orderValue = orderValue;
-	}
-
-	public String getShopArea() {
-		return shopArea;
-	}
-
-	public void setShopArea(String shopArea) {
-		this.shopArea = shopArea;
-	}
-
-	public String getAverageConsume() {
-		return averageConsume;
-	}
-
-	public void setAverageConsume(String averageConsume) {
-		this.averageConsume = averageConsume;
 	}
 
 	public String getShopId() {
@@ -224,8 +206,6 @@ public class Shop3Vo {
 		this.simpleIntro = simpleIntro;
 	}
 
-    
-
 	public String getArticleUrl() {
 		return articleUrl;
 	}
@@ -338,12 +318,20 @@ public class Shop3Vo {
 		this.shareImagePath = shareImagePath;
 	}
 
-	public Long getPointAvail() {
-		return pointAvail;
+	public String getShopArea() {
+		return shopArea;
 	}
 
-	public void setPointAvail(Long pointAvail) {
-		this.pointAvail = pointAvail;
+	public void setShopArea(String shopArea) {
+		this.shopArea = shopArea;
+	}
+
+	public String getAverageConsume() {
+		return averageConsume;
+	}
+
+	public void setAverageConsume(String averageConsume) {
+		this.averageConsume = averageConsume;
 	}
 
 	public Long getCountCoupon() {
@@ -369,7 +357,8 @@ public class Shop3Vo {
 	public void setFirstCouponName(String firstCouponName) {
 		this.firstCouponName = firstCouponName;
 	}
-	
-	
+
+    
+
 
 }

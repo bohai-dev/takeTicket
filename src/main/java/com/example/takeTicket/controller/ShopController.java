@@ -26,6 +26,7 @@ import com.example.takeTicket.util.HttpUtil;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
 import com.example.takeTicket.vo.Shop2Vo;
+import com.example.takeTicket.vo.Shop4Vo;
 
 
 
@@ -125,9 +126,9 @@ public class ShopController {
     
     //根据地区查商铺
     @RequestMapping(value="/getShopConditions", method = RequestMethod.GET)
-    public ResponseBody<List<Shop>> getShopConditions(@RequestParam("shopArea") String shopArea,@RequestParam("classId") String classId,@RequestParam("couponType") String couponType) throws CouponException {
+    public ResponseBody<List<Shop4Vo>> getShopConditions(@RequestParam("shopArea") String shopArea,@RequestParam("classId") String classId,@RequestParam("couponType") String couponType) throws CouponException {
 
-    	ResponseBody<List<Shop>> responseBody = new ResponseBody<>();
+    	ResponseBody<List<Shop4Vo>> responseBody = new ResponseBody<>();
     	responseBody.setData(shopService.getShopConditions(shopArea,classId,couponType));
     	
     	return responseBody;

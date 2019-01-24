@@ -65,6 +65,8 @@ public class Shop {
 
     private String averageConsume;
 
+    private Long orderValue;
+
     public String getShopId() {
         return shopId;
     }
@@ -311,5 +313,13 @@ public class Shop {
 
     public void setAverageConsume(String averageConsume) {
         this.averageConsume = averageConsume == null ? null : averageConsume.trim();
+    }
+
+    public Long getOrderValue() {
+        return orderValue;
+    }
+
+    public void setOrderValue(Long orderValue) {
+        this.orderValue = orderValue;
     }
 }

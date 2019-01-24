@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.takeTicket.domain.Coupon;
 import com.example.takeTicket.domain.Shop;
 import com.example.takeTicket.vo.Shop2Vo;
+import com.example.takeTicket.vo.Shop4Vo;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -55,6 +56,6 @@ public interface ShopService {
      * @param shop
      * @return
      */
-    List<Shop> getShopConditions(String  shopArea,String classId,String couponType);
+    List<Shop4Vo> getShopConditions(String  shopArea,String classId,String couponType);
     
 }

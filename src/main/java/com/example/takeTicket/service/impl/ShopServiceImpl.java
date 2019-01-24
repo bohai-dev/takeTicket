@@ -17,6 +17,7 @@ import com.example.takeTicket.domain.Shop;
 import com.example.takeTicket.domain.SpecialDishes;
 import com.example.takeTicket.service.ShopService;
 import com.example.takeTicket.vo.Shop2Vo;
+import com.example.takeTicket.vo.Shop4Vo;
 
 /**
  * Cteated by caoxx on 2018/11/6
@@ -78,8 +79,8 @@ public class ShopServiceImpl  implements ShopService {
 	}
 
 	@Override
-	public List<Shop> getShopConditions(String shopArea, String classId, String couponType) {
-		List<Shop> listShop = new ArrayList<Shop>();
+	public List<Shop4Vo> getShopConditions(String shopArea, String classId, String couponType) {
+		List<Shop4Vo> listShop = new ArrayList<Shop4Vo>();
 		BigDecimal flg1 = new BigDecimal(0);
 		BigDecimal flg2 = new BigDecimal(0);
 		BigDecimal flg3 = new BigDecimal(0);
