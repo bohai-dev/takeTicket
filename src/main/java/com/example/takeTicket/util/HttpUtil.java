@@ -1,4 +1,5 @@
 package com.example.takeTicket.util;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.Map;
 
@@ -191,9 +193,47 @@ public class HttpUtil {
         httpPost.setEntity(postEntity);
 
         HttpResponse httpResponse = httpClient.execute(httpPost);
+        int statusCode=httpResponse.getStatusLine().getStatusCode();
+        if (statusCode!=HttpStatus.OK.value()){
+            throw new Exception("连接地址失败"+statusCode);
+        }
         HttpEntity httpEntity = httpResponse.getEntity();
         return EntityUtils.toString(httpEntity, "UTF-8");
     }
+
+    public static InputStream postStream(String url, Map<String,String> params) throws Exception{
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPost httpPost = new HttpPost(url);
+        //将Map转为Json
+        //Gson gson = new Gson();
+        //String json = gson.toJson(params);
+        String json=JSON.toJSONString(params);
+        StringEntity entity = new StringEntity(json);
+        httpPost.setEntity(entity);
+        httpPost.setHeader("Accept", "application/json");
+        httpPost.setHeader("Content-type", "application/json");
+        httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"); // 设置请求头消息User-Agent
+        CloseableHttpResponse response = client.execute(httpPost);
+        if (response.getStatusLine().getStatusCode()!=200){
+            throw new Exception("连接"+url+"失败");
+        }
+        HttpEntity resEntity=response.getEntity(); // 获取返回实体
+        if (resEntity.isStreaming()){
+            return resEntity.getContent();
+        }else {
+            String content=EntityUtils.toString(resEntity,"utf-8");
+            LOGGER.error("获取小程序码错误:"+content);
+
+        }
+
+        //assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        response.close();
+        client.close();
+
+        return null;
+
+    }
+
 
 
 }
