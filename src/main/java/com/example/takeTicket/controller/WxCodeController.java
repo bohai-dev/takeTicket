@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -21,18 +22,20 @@ public class WxCodeController {
 
     @RequestMapping("/getwxcode")
     public void getWxQRcode(@RequestParam("shopId") String shopId, @RequestParam(value = "width",defaultValue = "100") String width,
-                            @RequestParam("userId") String userId,HttpServletResponse httpServletResponse) {
+                            @RequestParam("userId") String userId, @RequestParam(value = "isForward",required = false,defaultValue = "0")String isForward,
+                            HttpServletResponse httpServletResponse) {
         try {
         //获取access_token
         String accessToken=HttpUtil.get(Constants.SERVER_URL+"/access_token");
         System.out.println("取得token:"+accessToken);
         String codeUrl="https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token="+accessToken;
         Map<String,String> params=new HashMap<>();
-        params.put("path","pages/storeDetail/storeDetail?params="+shopId+"&custId="+userId);
+        params.put("path","pages/storeDetail/storeDetail?params="+shopId+"&custId="+userId+"&isForward"+isForward);
         params.put("width",width);
 
 
             InputStream imageStream= HttpUtil.postStream(codeUrl,params);
+
             if (imageStream!=null){
                 httpServletResponse.setContentType("image/jpg");
                 OutputStream os = httpServletResponse.getOutputStream();
