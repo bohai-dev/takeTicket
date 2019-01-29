@@ -113,10 +113,11 @@ public class ChangeCouponServiceImpl  implements ChangeCouponService {
 		//用户积分扣除
 		custPointRecordMapper.subPoint(new BigDecimal(custId), shopId, spendPoint);
 
-		if (!StringUtils.isEmpty(formId)){
-			//发送模板消息
-			templateMessageService.sendExchSuccessMsg(custId,shopId,couponId,formId);
-		}
+		//v1.0.5 小程序客户发送消息取消
+//		if (!StringUtils.isEmpty(formId)){
+//			//发送模板消息
+//			templateMessageService.sendExchSuccessMsg(custId,shopId,couponId,formId);
+//		}
 
 		
 		return custCouponRecordRet;

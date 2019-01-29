@@ -42,13 +42,17 @@ public class PointServiceImpl  implements PointService {
 	public void addPoint(String custId, String shopId, BigDecimal pointNum) {
 		CustPointRecord custPointRecordRet = new CustPointRecord();
 		custPointRecordRet = getPoint(custId,shopId);
-		if("".equals(custPointRecordRet.getCustId())){
+		if(null == custPointRecordRet){
 			//插入新数据
+			custPointRecordRet = new CustPointRecord();
 			custPointRecordRet.setCustId(Long.valueOf(custId));
 			custPointRecordRet.setPointNumber(pointNum);
 			custPointRecordRet.setShopId(shopId);
-			Long i = (long) 0;
+			custPointRecordRet.setPointSub(new BigDecimal(0));
+			Long i = (long) pointNum.longValue();
 			custPointRecordRet.setPointState(i);
+			custPointRecordRet.setCreateTime(new Date());
+			custPointRecordRet.setBakStr("v1.0.5 总之，各种途径首次进入商家详情页的用户即得一点。李总");
 			custPointRecordMapper.insertSelective(custPointRecordRet);
 		} else {
 			//更新记录
