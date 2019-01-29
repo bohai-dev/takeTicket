@@ -159,6 +159,8 @@ public class UserPointController {
 		return ret;
     }
     
+    // 查询客户在店铺中的一共总积分
+    
     
 
 
