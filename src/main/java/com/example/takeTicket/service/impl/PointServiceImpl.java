@@ -49,7 +49,7 @@ public class PointServiceImpl  implements PointService {
 			custPointRecordRet.setPointNumber(pointNum);
 			custPointRecordRet.setShopId(shopId);
 			custPointRecordRet.setPointSub(new BigDecimal(0));
-			Long i = (long) pointNum.longValue();
+			Long i = (long) new Long(0);
 			custPointRecordRet.setPointState(i);
 			custPointRecordRet.setCreateTime(new Date());
 			custPointRecordRet.setBakStr("v1.0.5 总之，各种途径首次进入商家详情页的用户即得一点。李总");
