@@ -2,6 +2,7 @@ package com.example.takeTicket.controller;
 
 import java.util.List;
 
+import com.example.takeTicket.domain.CustCouponRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,11 +33,12 @@ public class UserCouponController {
      * @throws CouponException
      */
     @RequestMapping(value = "/destroy",method =RequestMethod.GET)
-    public ResponseHeader destroyCoupon(@RequestParam("userCouponId")String userCouponId) throws CouponException {
-        ResponseHeader responseHeader=new ResponseHeader();
-        userCouponService.destroyCoupon(userCouponId);
-
-        return responseHeader;
+    public ResponseBody<CustCouponRecord> destroyCoupon(@RequestParam("userCouponId")String userCouponId) throws CouponException {
+        //ResponseHeader responseHeader=new ResponseHeader();
+        ResponseBody<CustCouponRecord> responseBody=new ResponseBody<>();
+        CustCouponRecord custCouponRecord=userCouponService.destroyCoupon(userCouponId);
+        responseBody.setData(custCouponRecord);
+        return responseBody;
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.example.takeTicket.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -15,11 +17,11 @@ public class CustCouponRecord {
     private BigDecimal spendPoint;
 
     private Integer couponState;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String bakStr;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     public String getCustCouponId() {
