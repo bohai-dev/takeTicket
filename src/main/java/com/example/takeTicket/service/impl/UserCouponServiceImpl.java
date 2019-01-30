@@ -33,7 +33,7 @@ public class UserCouponServiceImpl implements UserCouponService {
     CouponMapper couponMapper;
 
     @Override
-    public void destroyCoupon(String userCouponId) throws CouponException{
+    public CustCouponRecord destroyCoupon(String userCouponId) throws CouponException{
         CustCouponRecord custCoupon=custCouponMapper.selectByPrimaryKey(userCouponId);
         if (custCoupon==null){
             throw new CouponException(CouponErrorConstant.COUPON_NOT_EXISTS_ERROR);
@@ -49,6 +49,8 @@ public class UserCouponServiceImpl implements UserCouponService {
         newCustCoupon.setUpdateTime(new Date());
 
         custCouponMapper.updateByPrimaryKeySelective(newCustCoupon);
+
+        return newCustCoupon;
 
     }
 

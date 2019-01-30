@@ -2,6 +2,7 @@ package com.example.takeTicket.service;
 
 import java.util.List;
 
+import com.example.takeTicket.domain.CustCouponRecord;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.vo.UserCoupon;
 import com.example.takeTicket.vo.UserCouponAllInfoVo;
@@ -15,7 +16,7 @@ public interface UserCouponService {
      *  销毁优惠券
       * @param userCouponId
      */
-   void  destroyCoupon(String userCouponId) throws CouponException;
+    CustCouponRecord destroyCoupon(String userCouponId) throws CouponException;
 
     /**
      * 查询优惠券信息
