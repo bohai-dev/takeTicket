@@ -44,6 +44,18 @@ public class UserCouponAllInfoVo {
     private Long exchangeTimes;
     
     private String shopName;
+    
+    private String topImagePath;
+    
+    
+
+	public String getTopImagePath() {
+		return topImagePath;
+	}
+
+	public void setTopImagePath(String topImagePath) {
+		this.topImagePath = topImagePath;
+	}
 
 	public String getCustCouponId() {
 		return custCouponId;
