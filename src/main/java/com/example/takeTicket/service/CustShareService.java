@@ -3,6 +3,7 @@ package com.example.takeTicket.service;
 import java.util.List;
 
 import com.example.takeTicket.exception.CouponException;
+import com.example.takeTicket.vo.CustCanExchangeCouponVo;
 import com.example.takeTicket.vo.Shop3Vo;
 
 /**
@@ -26,4 +27,12 @@ public interface CustShareService {
      * @throws CouponException
      */
     List<Shop3Vo> getCustShareList(String custId) throws CouponException;
+    
+    /**
+     * 客户可兑换优惠一览
+     * @param custId,shopId
+     * @return
+     * @throws CouponException
+     */
+    List<CustCanExchangeCouponVo> getCustCanExchangeCouponList(String custId) throws CouponException;
 }

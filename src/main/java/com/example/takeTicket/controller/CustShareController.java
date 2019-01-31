@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.CustShareService;
+import com.example.takeTicket.vo.CustCanExchangeCouponVo;
 import com.example.takeTicket.vo.ResponseBody;
 import com.example.takeTicket.vo.ResponseHeader;
 import com.example.takeTicket.vo.Shop3Vo;
@@ -47,6 +48,17 @@ public class CustShareController {
     	Logger logger = LoggerFactory.getLogger(CustUserController.class);
     	ResponseBody<List<Shop3Vo>> ResponseBodyret = new ResponseBody<>();
     	ResponseBodyret.setData(custShareService.getCustShareList(custId));
+    	
+		return ResponseBodyret;
+    	
+    }
+    
+    // 客户可兑换优惠一览
+    @RequestMapping(value="/getCustCanExchangeCouponList", method = RequestMethod.GET)
+    public ResponseBody<List<CustCanExchangeCouponVo>> getCustCanExchangeCouponList(@RequestParam("custId") String custId) throws CouponException {
+    	Logger logger = LoggerFactory.getLogger(CustUserController.class);
+    	ResponseBody<List<CustCanExchangeCouponVo>> ResponseBodyret = new ResponseBody<>();
+    	ResponseBodyret.setData(custShareService.getCustCanExchangeCouponList(custId));
     	
 		return ResponseBodyret;
     	

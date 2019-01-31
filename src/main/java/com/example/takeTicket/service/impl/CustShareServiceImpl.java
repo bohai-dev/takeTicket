@@ -13,6 +13,7 @@ import com.example.takeTicket.dao.CustShareInfoMapper;
 import com.example.takeTicket.domain.CustShareInfo;
 import com.example.takeTicket.exception.CouponException;
 import com.example.takeTicket.service.CustShareService;
+import com.example.takeTicket.vo.CustCanExchangeCouponVo;
 import com.example.takeTicket.vo.Shop3Vo;
 
 /**
@@ -45,6 +46,14 @@ public class CustShareServiceImpl  implements CustShareService {
 		
 		
 		return listShop;
+	}
+
+	@Override
+	public List<CustCanExchangeCouponVo> getCustCanExchangeCouponList(String custId) throws CouponException {
+		List<CustCanExchangeCouponVo> list = new ArrayList<>();
+		list = custShareInfoMapper.getCustCanExchangeCouponList(new BigDecimal(custId));
+		
+		return list;
 	}
 
 
