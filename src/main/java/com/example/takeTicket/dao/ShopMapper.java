@@ -27,7 +27,7 @@ public interface ShopMapper {
     @Select("select * from SHOP where ADMIN_USER_ID=#{adminUserId}")
     Shop selectByAdminUserId(@Param("adminUserId")String adminUserId);
 
-    @Select("select * from SHOP where SHOP_NAME like '%' || #{shopStr} || '%' ")
+    @Select("select * from SHOP where IS_DELETE = '0' and SHOP_NAME like '%' || #{shopStr} || '%' ")
     List<Shop> likeShopStr(@Param("shopStr")String shopStr);
     
     @Update("update SHOP set SCAN_TIMES = SCAN_TIMES + #{scanNum} where SHOP_ID = #{shopId}")

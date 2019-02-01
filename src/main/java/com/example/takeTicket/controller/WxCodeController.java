@@ -30,7 +30,7 @@ public class WxCodeController {
         System.out.println("取得token:"+accessToken);
         String codeUrl="https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token="+accessToken;
         Map<String,String> params=new HashMap<>();
-        params.put("path","pages/storeDetail/storeDetail?params="+shopId+"&custId="+userId+"&isForward"+isForward);
+        params.put("path","pages/storeDetail/storeDetail?params="+shopId+"&custId="+userId+"&isForward="+isForward);
         params.put("width",width);
 
 
