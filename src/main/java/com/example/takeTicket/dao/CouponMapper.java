@@ -20,6 +20,6 @@ public interface CouponMapper {
 
     int updateByPrimaryKey(Coupon record);
     
-    @Select("select * from COUPON where SHOP_ID = #{shopId} and IS_DELETE = '0'")
+    @Select("select * from COUPON where SHOP_ID = #{shopId} and IS_DELETE = '0' order by EXCHANGE_TIMES,COUPON_TYPE")
     List<Coupon> getShopIdfindCoupon(@Param("shopId")String shopId);
 }
