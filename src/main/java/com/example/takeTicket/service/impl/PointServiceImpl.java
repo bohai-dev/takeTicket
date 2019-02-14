@@ -33,7 +33,12 @@ public class PointServiceImpl  implements PointService {
 	@Override
 	public CustPointRecord getPoint(String custId, String shopId) {
 		CustPointRecord custPointRecordRet = new CustPointRecord();
-		custPointRecordRet = custPointRecordMapper.getPoint(new BigDecimal(custId), shopId);
+		if(null == custId || "".equals(custId)) {
+			custPointRecordRet = custPointRecordMapper.getPoint(new BigDecimal(0), shopId);
+		} else {
+			custPointRecordRet = custPointRecordMapper.getPoint(new BigDecimal(custId), shopId);
+		}
+		
 		return custPointRecordRet;
 	}
 
