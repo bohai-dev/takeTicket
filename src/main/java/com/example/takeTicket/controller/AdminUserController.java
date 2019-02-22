@@ -36,7 +36,7 @@ public class AdminUserController {
     @RequestMapping("/helpWordPath")
     public ResponseBody<String> helpWordPath() throws CouponException {
 
-        String helpPath = "http://test";
+        String helpPath = "https://mp.weixin.qq.com/s/Uvt9hPzoO7FN9yzGb5dafg";
         ResponseBody<String>  responseBody=new ResponseBody<>();
         responseBody.setData(helpPath);
 
