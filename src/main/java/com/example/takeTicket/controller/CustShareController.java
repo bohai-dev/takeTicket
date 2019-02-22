@@ -63,7 +63,39 @@ public class CustShareController {
 		return ResponseBodyret;
     	
     }
-   
+    
+    // 客户分享记录插入，给朋友的是01 ，保存长图发朋友圈的是05
+    @RequestMapping(value="/insCustShareInfo", method = RequestMethod.GET)
+    public ResponseHeader insCustShareInfo(@RequestParam("custId") String custId,@RequestParam("shopId") String shopId,@RequestParam("shareStyle") String shareStyle) throws CouponException {
+    	Logger logger = LoggerFactory.getLogger(CustUserController.class);
+    	ResponseHeader responseHeader = new ResponseHeader();
+    	custShareService.insCustShareInfo(custId, shopId,shareStyle);
+    	
+		return responseHeader;
+    	
+    }
+    
+    // 客户分享记录更新，‘1’为无效
+    @RequestMapping(value="/updShareStatue", method = RequestMethod.GET)
+    public ResponseHeader updShareStatue(@RequestParam("shareStyle") String shareStyle) throws CouponException {
+    	Logger logger = LoggerFactory.getLogger(CustUserController.class);
+    	ResponseHeader responseHeader = new ResponseHeader();
+    	custShareService.updShareStatue(shareStyle);
+    	
+		return responseHeader;
+    	
+    }
+    
+    // 客户分享记录加分前的CHECK
+    @RequestMapping(value="/checkShareStatue", method = RequestMethod.GET)
+    public ResponseBody<String> checkShareStatue(@RequestParam("custId") String custId,@RequestParam("shopId") String shopId,@RequestParam("shareStyle") String shareStyle) throws CouponException {
+    	Logger logger = LoggerFactory.getLogger(CustUserController.class);
+    	ResponseBody<String> ResponseBodyret = new ResponseBody<String>();
+    	ResponseBodyret.setData(custShareService.checkShareStatue(custId, shopId,shareStyle));
+    	
+		return ResponseBodyret;
+    	
+    }
 
 
 }

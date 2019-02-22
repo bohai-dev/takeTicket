@@ -32,6 +32,17 @@ public class AdminUserController {
         responseBody.setData(shop);
         return  responseBody;
     }
+    
+    @RequestMapping("/helpWordPath")
+    public ResponseBody<String> helpWordPath() throws CouponException {
+
+        String helpPath = "";
+        ResponseBody<String>  responseBody=new ResponseBody<>();
+        responseBody.setData(helpPath);
+
+        
+        return  responseBody;
+    }
 
 
 

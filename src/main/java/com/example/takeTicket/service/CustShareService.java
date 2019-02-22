@@ -35,4 +35,30 @@ public interface CustShareService {
      * @throws CouponException
      */
     List<CustCanExchangeCouponVo> getCustCanExchangeCouponList(String custId) throws CouponException;
+    
+    /**
+     * 2019年v1.0.9新客户分享登入 启用新表
+     * @param custId,shopId
+     * @return
+     * @throws CouponException
+     */
+    void insCustShareInfo(String custId,String shopId,String shareStyle) throws CouponException;
+    
+    /**
+     * 2019年v1.0.9新客户转发状态更新
+     * @param custId,shopId
+     * @return
+     * @throws CouponException
+     */
+    void updShareStatue(String shareStyle) throws CouponException;
+    
+    
+    /**
+     * 2019年v1.0.9新客户分享记录加分前的CHECK
+     * @param custId,shopId
+     * @return
+     * @throws CouponException
+     */
+    String checkShareStatue(String custId,String shopId,String shareStyle) throws CouponException;
+    
 }
