@@ -56,4 +56,41 @@ public class WxCodeController {
 
     }
 
+    @RequestMapping("/roundcode")
+    public void getRoundQRcode(@RequestParam("shopId") String shopId, @RequestParam(value = "width",defaultValue = "100") String width,
+                            @RequestParam("userId") String userId, @RequestParam(value = "isForward",required = false,defaultValue = "0")String isForward,
+                            HttpServletResponse httpServletResponse) {
+        try {
+            //获取access_token
+            String accessToken=HttpUtil.get(Constants.SERVER_URL+"/access_token");
+            System.out.println("取得token:"+accessToken);
+            String codeUrl="https://api.weixin.qq.com/wxa/getwxacode?access_token="+accessToken;
+            Map<String,String> params=new HashMap<>();
+            params.put("path","pages/storeDetail/storeDetail?params="+shopId+"&custId="+userId+"&isForward"+isForward);
+            params.put("width",width);
+
+
+            InputStream imageStream= HttpUtil.postStream(codeUrl,params);
+
+            if (imageStream!=null){
+                httpServletResponse.setContentType("image/jpg");
+                OutputStream os = httpServletResponse.getOutputStream();
+                int length = 0;
+                byte[] buf = new byte[1024];
+
+                while ((length = imageStream.read(buf)) > 0) {
+                    os.write(buf, 0, length);
+                }
+                os.flush();
+                os.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
 }
