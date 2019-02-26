@@ -47,7 +47,7 @@
 
 
 
-		<table schema="" tableName="SHOP" domainObjectName="Shop"
+		<table schema="" tableName="CUST_NSHARE_INFO" domainObjectName="CustNshareInfo"
 			enableSelectByExample="false" enableDeleteByExample="false"
 			enableCountByExample="false" enableUpdateByExample="false"
 			selectByExampleQueryId="false">

@@ -26,7 +26,7 @@ public interface CustCouponRecordMapper {
     int selCustCouponIDSeq();
     
     //@Select("select * from CUST_COUPON_RECORD where CUST_ID = #{custId} and COUPON_STATE = #{couponStatus}")
-    @Select("select A.*,B.COUPON_TYPE as COUPON_TYPE,B.COUPON_VALUE as COUPON_VALUE,B.BACKUP_COLUMN1 as BACKUP_COLUMN1,B.BACKUP_COLUMN2 as BACKUP_COLUMN2,B.IS_DELETE as IS_DELETE,B.EXCHANGE_TIMES as EXCHANGE_TIMES,C.SHOP_NAME as SHOP_NAME from CUST_COUPON_RECORD A,COUPON B,SHOP C where CUST_ID = #{custId} and COUPON_STATE = #{couponStatus} and A.COUPON_ID = B.COUPON_ID and A.SHOP_ID = C.SHOP_ID and B.SHOP_ID = C.SHOP_ID")
+    @Select("select A.*,B.COUPON_TYPE as COUPON_TYPE,B.COUPON_VALUE as COUPON_VALUE,B.BACKUP_COLUMN1 as BACKUP_COLUMN1,B.BACKUP_COLUMN2 as BACKUP_COLUMN2,B.IS_DELETE as IS_DELETE,B.EXCHANGE_TIMES as EXCHANGE_TIMES,C.SHOP_NAME as SHOP_NAME,C.TOP_IMAGE_PATH as TOP_IMAGE_PATH from CUST_COUPON_RECORD A,COUPON B,SHOP C where CUST_ID = #{custId} and COUPON_STATE = #{couponStatus} and A.COUPON_ID = B.COUPON_ID and A.SHOP_ID = C.SHOP_ID and B.SHOP_ID = C.SHOP_ID order by C.ORDER_VALUE desc,C.SHOP_ID")
     List<UserCouponAllInfoVo> selectCouponListByCust(@Param("custId")String custId,@Param("couponStatus")BigDecimal couponStatus);
     
     

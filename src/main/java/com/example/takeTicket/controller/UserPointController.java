@@ -57,7 +57,6 @@ public class UserPointController {
 
 		Logger logger = LoggerFactory.getLogger(CustUserController.class);
 		ResponseHeader responseHeader = new ResponseHeader();
-		System.out.println("custId9999=" + custId);
 		pointService.addPoint(custId, shopId,pointNum);
 		
         

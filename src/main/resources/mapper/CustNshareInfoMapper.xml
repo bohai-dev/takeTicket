@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.takeTicket.dao.CustNshareInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.takeTicket.domain.CustNshareInfo" >
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" />
+    <result column="SHARE_STYLE" property="shareStyle" jdbcType="VARCHAR" />
+    <result column="CONTROL_FLG" property="controlFlg" jdbcType="VARCHAR" />
+    <result column="SHARE_TIME" property="shareTime" jdbcType="TIMESTAMP" />
+    <result column="BAK_STR" property="bakStr" jdbcType="VARCHAR" />
+    <result column="BAK_FLG" property="bakFlg" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.takeTicket.domain.CustNshareInfo" >
+    insert into CUST_NSHARE_INFO (CUST_ID, SHOP_ID, SHARE_STYLE, 
+      CONTROL_FLG, SHARE_TIME, BAK_STR, 
+      BAK_FLG)
+    values (#{custId,jdbcType=DECIMAL}, #{shopId,jdbcType=VARCHAR}, #{shareStyle,jdbcType=VARCHAR}, 
+      #{controlFlg,jdbcType=VARCHAR}, #{shareTime,jdbcType=TIMESTAMP}, #{bakStr,jdbcType=VARCHAR}, 
+      #{bakFlg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.takeTicket.domain.CustNshareInfo" >
+    insert into CUST_NSHARE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="shareStyle != null" >
+        SHARE_STYLE,
+      </if>
+      <if test="controlFlg != null" >
+        CONTROL_FLG,
+      </if>
+      <if test="shareTime != null" >
+        SHARE_TIME,
+      </if>
+      <if test="bakStr != null" >
+        BAK_STR,
+      </if>
+      <if test="bakFlg != null" >
+        BAK_FLG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStyle != null" >
+        #{shareStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="controlFlg != null" >
+        #{controlFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTime != null" >
+        #{shareTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bakStr != null" >
+        #{bakStr,jdbcType=VARCHAR},
+      </if>
+      <if test="bakFlg != null" >
+        #{bakFlg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -26,7 +26,7 @@ public class UserCouponAllInfoVo {
 
     private String bakStr;
 
-    @JsonFormat(pattern="yyyy年MM月dd日")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
     
     //COUPON 表
@@ -44,6 +44,18 @@ public class UserCouponAllInfoVo {
     private Long exchangeTimes;
     
     private String shopName;
+    
+    private String topImagePath;
+    
+    
+
+	public String getTopImagePath() {
+		return topImagePath;
+	}
+
+	public void setTopImagePath(String topImagePath) {
+		this.topImagePath = topImagePath;
+	}
 
 	public String getCustCouponId() {
 		return custCouponId;
