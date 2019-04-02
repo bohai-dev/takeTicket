@@ -37,8 +37,8 @@ public class AdminUserController {
     public ResponseBody<String> helpWordPath() throws CouponException {
 
 //        String helpPath = "https://mp.weixin.qq.com/s/Uvt9hPzoO7FN9yzGb5dafg";
-        String helpPath = "https://mp.weixin.qq.com/s/z--0PTdn_YR48_T0dYjmDA";
-    //    String helpPath = "https://mp.weixin.qq.com/s/-jfSjaudaPyuAMWG7kaLEg";
+     //   String helpPath = "https://mp.weixin.qq.com/s/z--0PTdn_YR48_T0dYjmDA";
+        String helpPath = "https://mp.weixin.qq.com/s/-jfSjaudaPyuAMWG7kaLEg";
         ResponseBody<String>  responseBody=new ResponseBody<>();
         responseBody.setData(helpPath);
 
